@@ -1,967 +1,561 @@
-/* Reset and Base Styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background: #000000;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-/* Header Styles */
-.header {
-    background: linear-gradient(135deg, #03050d 0%, #130b1a 100%);
-    color: rgb(244, 236, 236);
-    padding: 1rem 0;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    box-shadow: 0 2px 10px rgba(213, 216, 10, 0.272);
-}
-
-.header .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.nav-brand {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.logo {
-    height: 40px;
-    width: auto;
-    border-radius: 5px;
-}
-
-.nav-brand span {
-    font-size: 1.5rem;
-    font-weight: bold;
-}
-
-/* Navigation Styles */
-.navbar {
-    display: flex;
-    align-items: center;
-    box-shadow: 0 2px 5px rgba(11, 11, 11, 0.4);
-    border: 1px solid rgba(242, 242, 243, 0.208);
-}
-
-.nav-menu {
-    display: flex;
-    list-style: none;
-    gap: 2rem;
-}
-
-.nav-link {
-    color: rgb(235, 226, 226);
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.nav-link:hover {
-    background-color: rgba(234, 223, 234, 0.1);
-    transform: translateY(-2px);
-}
-
-.nav-link i {
-    font-size: 1.1rem;
-}
-
-/* Hamburger Menu */
-.hamburger {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-    gap: 4px;
-}
-
-.bar {
-    width: 25px;
-    height: 3px;
-    background-color: white;
-    transition: 0.3s;
-    border-radius: 2px;
-}
-
-/* Hero Section */
-.hero {
-    background: #000000;
-    color: white;
-    padding: 120px 0 30px;
-    text-align: center;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.hero-content h1 {
-    font-size: 3.5rem;
-    margin-bottom: 1rem;
-    font-weight: 700;
-}
-
-.blink-accent {
-    background: linear-gradient(90deg, #ff6b6b, #ffd93d, #71fdb2, #4dabf7, #b197fc, #ff6b6b);
-    background-size: 400% 100%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: colorCycle 8s linear infinite, blinkPulse 2s ease-in-out infinite;
-}
-
-@keyframes colorCycle {
-    0% { background-position: 0% 50%; }
-    100% { background-position: 100% 50%; }
-}
-
-@keyframes blinkPulse {
-    0%, 45% { opacity: 1; }
-    55%, 100% { opacity: 0.8; }
-}
-
-.hero-content p {
-    font-size: 1.3rem;
-    margin-bottom: 2rem;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.hero-buttons {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.btn {
-    padding: 12px 30px;
-    border: none;
-    border-radius: 25px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    display: inline-block;
-    cursor: pointer;
-}
-
-.btn-primary {
-    background-color: #81d013;
-    color: #0f0a0a;
-}
-
-.btn-primary:hover {
-    background-color: #f0dd4c;
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(255, 136, 0, 0.4);
-}
-
-.btn-secondary {
-    background-color: transparent;
-    color: #f0f0f0;
-    border: 2px solid #ede7e7;
-}
-
-.btn-secondary:hover {
-    background-color: #9b66bf;
-    color: #f5f3f3;
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(235, 225, 35, 0.15);
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .nav-menu {
-        position: fixed;
-        left: -100%;
-        top: 70px;
-        flex-direction: column;
-        background-color: rgba(190, 182, 194, 0.95);
-        width: 100%;
-        text-align: center;
-        transition: 0.3s;
-        padding: 2rem 0;
-        backdrop-filter: blur(10px);
-    }
-
-    .nav-menu.active {
-        left: 0;
-    }
-
-    .nav-menu li {
-        margin: 1rem 0;
-    }
-
-    .hamburger {
-        display: flex;
-    }
-
-    .hamburger.active .bar:nth-child(2) {
-        opacity: 0;
-    }
-
-    .hamburger.active .bar:nth-child(1) {
-        transform: translateY(7px) rotate(45deg);
-    }
-
-    .hamburger.active .bar:nth-child(3) {
-        transform: translateY(-7px) rotate(-45deg);
-    }
-
-    .hero-content h1 {
-        font-size: 2.5rem;
-    }
-
-    .hero-content p {
-        font-size: 1.1rem;
-        padding: 0 20px;
-    }
-
-    .hero-buttons {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .btn {
-        width: 200px;
-    }
-}
-
-@media (max-width: 480px) {
-    .hero-content h1 {
-        font-size: 2rem;
-    }
-
-    .nav-brand span {
-        font-size: 1.2rem;
-    }
-
-    .logo {
-        height: 35px;
-    }
-}
-html {
-    scroll-behavior: smooth; /* already present */
-    scroll-padding-top: 80px; /* match your header height */
-  }  
-  
-/* Match hero gradient for content sections */
-#search,
-#updates {
-    background: linear-gradient(135deg, #110b1c 0%, #150725 100%);
-    color: rgb(237, 220, 220);
-}
-
-#notes,
-#pyqs,
-#contact {
-    background: #000000;
-    color: rgb(237, 220, 220);
-}
-
-/* Modern Section Divider - Professional & Creative */
-.section-divider {
-    position: relative;
-    height: 2px;
-    margin: 50px auto;
-    max-width: 1200px;
-    background: linear-gradient(90deg, 
-        transparent 0%, 
-        rgba(138, 92, 246, 0.2) 15%,
-        rgba(78, 205, 196, 0.4) 30%,
-        rgba(255, 209, 102, 0.6) 50%,
-        rgba(78, 205, 196, 0.4) 70%,
-        rgba(138, 92, 246, 0.2) 85%,
-        transparent 100%);
-    overflow: visible;
-    animation: dividerPulse 3s ease-in-out infinite;
-}
-
-.section-divider::before {
-    content: "";
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #ffd166, #ffed4e);
-    box-shadow: 
-        0 0 20px rgba(255, 209, 102, 0.8),
-        0 0 40px rgba(255, 209, 102, 0.4),
-        inset 0 0 10px rgba(255, 255, 255, 0.3);
-    animation: dividerGlow 2s ease-in-out infinite;
-}
-
-.section-divider::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    top: 0;
-    transform: translateX(-50%);
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg,
-        transparent 0%,
-        rgba(255, 209, 102, 0.1) 48%,
-        rgba(255, 209, 102, 0.1) 52%,
-        transparent 100%);
-    animation: dividerShimmer 4s linear infinite;
-}
-
-@keyframes dividerPulse {
-    0%, 100% { opacity: 0.6; }
-    50% { opacity: 1; }
-}
-
-@keyframes dividerGlow {
-    0%, 100% { 
-        transform: translate(-50%, -50%) scale(1);
-        box-shadow: 0 0 20px rgba(255, 209, 102, 0.8), 0 0 40px rgba(255, 209, 102, 0.4);
-    }
-    50% { 
-        transform: translate(-50%, -50%) scale(1.2);
-        box-shadow: 0 0 30px rgba(255, 209, 102, 1), 0 0 60px rgba(255, 209, 102, 0.6);
-    }
-}
-
-@keyframes dividerShimmer {
-    0% { transform: translateX(-50%) translateX(-100%); }
-    100% { transform: translateX(-50%) translateX(100%); }
-}
-
-/* About section styles */
-#about {
-    background: rgba(255,255,255,0.04);
-    color: #f3f2f7;
-}
-
-.about-wrap {
-    display: grid;
-    grid-template-columns: 1.4fr 1fr;
-    gap: 28px;
-}
-
-.about-title { margin: 0 0 10px 0; }
-.about-lead { margin: 0 0 16px 0; color: #cfcbe0; }
-
-.about-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
-.about-list li { display: flex; align-items: center; gap: 10px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 10px 12px; }
-.about-list i { color: #ffd166; }
-
-.about-showcase { display: grid; gap: 16px; }
-.about-card { 
-    display: flex; 
-    gap: 12px; 
-    align-items: center; 
-    background: rgba(255,255,255,0.04); 
-    border: 1px solid rgba(231, 223, 223, 0.221); 
-    border-radius: 14px; 
-    padding: 14px; 
-    box-shadow: 0 10px 24px rgba(193, 193, 44, 0.116);
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-    transition: transform 0.2s ease;
-}
-
-.about-card::before {
-    content: "";
-    position: absolute;
-    inset: -2px;
-    border-radius: 14px;
-    padding: 2px;
-    background: linear-gradient(45deg, #ffd166, #ffed4e, #ffd166);
-    background-size: 200% 200%;
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    z-index: 1;
-    pointer-events: none;
-}
-
-.about-card:hover::before {
-    opacity: 1;
-    animation: yellowBorderRun 2s linear infinite;
-}
-
-@keyframes yellowBorderRun {
-    0% {
-        background-position: 0% 0%;
-    }
-    25% {
-        background-position: 100% 0%;
-    }
-    50% {
-        background-position: 100% 100%;
-    }
-    75% {
-        background-position: 0% 100%;
-    }
-    100% {
-        background-position: 0% 0%;
-    }
-}
-.about-card-icon { width: 44px; height: 44px; border-radius: 10px; display: grid; place-items: center; color: #fff; background: linear-gradient(135deg, #8a5cf6, #b563ec); box-shadow: 0 10px 20px rgba(181, 99, 236, 0.35); }
-.about-card-body h3 { margin: 0 0 6px 0; }
-.about-card-body p { margin: 0; color: #cecbe2; }
-
-@media (max-width: 900px) {
-  .about-wrap { grid-template-columns: 1fr; }
-}
-
-/* Department section */
-#dept { background: #000000; color: #ece9fb; }
-.dept-wrap { display: grid; grid-template-columns: 1.5fr 1fr; gap: 28px; align-items: center; }
-.dept-title { margin: 0 0 10px 0; }
-.dept-lead { margin: 0 0 18px 0; color: #cfcbe0; }
-.dept-actions { display: flex; gap: 12px; align-items: center; }
-.dept-link { position: relative; display: inline-flex; gap: 10px; align-items: center; padding: 12px 18px; border-radius: 12px; color: #111; background: #a0f12f; text-decoration: none; font-weight: 600; box-shadow: 0 10px 20px rgba(0,0,0,0.45); transition: transform .2s ease, box-shadow .2s ease; }
-.dept-link:hover { transform: translateY(-2px); box-shadow: 0 16px 32px rgba(0,0,0,0.55); }
-.dept-link i { color: #111; }
-.dept-link .link-glow { position: absolute; inset: -3px; border-radius: 14px; background: linear-gradient(135deg, rgba(156,107,255,.5), rgba(78,205,196,.5)); filter: blur(14px); opacity: .55; z-index: -1; }
-.dept-aside { display: flex; justify-content: center; }
-.dept-badge { display: inline-flex; align-items: center; gap: 10px; padding: 12px 16px; border-radius: 14px; border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.04); box-shadow: 0 10px 24px rgba(0,0,0,0.45); }
-.dept-badge i { color: #ffd166; }
-.dept-badge span { color: #e9e6f7; font-weight: 600; }
-
-@media (max-width: 900px) {
-  .dept-wrap { grid-template-columns: 1fr; }
-}
-
-/* Events */
-#events { background: #000000; color: #ece9fb; }
-.events-head { margin-bottom: 16px; }
-.events-title { margin: 0 0 6px 0; }
-.events-lead { margin: 0; color: #cfcbe0; }
-.events-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-.event-card { 
-    position: relative; 
-    border-radius: 16px; 
-    overflow: hidden; 
-    background: rgba(180, 151, 151, 0.04); 
-    border:  1px solid rgba(231, 223, 223, 0.221); 
-    box-shadow:  0 10px 24px rgba(193, 193, 44, 0.116); 
-    transition: transform .2s ease, box-shadow .2s ease;
-    cursor: pointer;
-}
-
-.event-card::before {
-    content: "";
-    position: absolute;
-    inset: -2px;
-    border-radius: 16px;
-    padding: 2px;
-    background: linear-gradient(45deg, #ffd166, #ffed4e, #ffd166);
-    background-size: 200% 200%;
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    z-index: 1;
-    pointer-events: none;
-}
-
-.event-card:hover::before {
-    opacity: 1;
-    animation: yellowBorderRun 2s linear infinite;
-}
-.event-card:hover { transform: translateY(-4px); box-shadow: 0 16px 36px rgba(0,0,0,0.55); }
-.event-media { aspect-ratio: 16/10; overflow: hidden; }
-.event-media img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(1.05); }
-.event-body { padding: 12px 14px; }
-.event-body h3 { margin: 0 0 6px 0; }
-.event-body p { margin: 0; color: #cecbe2; }
-
-@media (max-width: 1100px) { .events-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 640px) { .events-grid { grid-template-columns: 1fr; } }
-
-/* Highlights below hero */
-#highlights {
-    background: #000000;
-    color: #fff;
-}
-
-.highlight-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-}
-
-.highlight-card {
-    position: relative;
-    padding: 22px;
-    border-radius: 18px;
-    color: #fff;
-    overflow: hidden;
-    box-shadow: 0 14px 30px rgba(0,0,0,0.45);
-}
-
-.highlight-card h3 { margin: 0 0 6px 0; }
-.highlight-card p { margin: 0; color: rgba(255,255,255,0.9); }
-
-/* Unique gradient backgrounds */
-.highlight-1 { background: linear-gradient(135deg, #271e4b 0%, #3a7bd5 100%); }
-.highlight-2 { background: linear-gradient(135deg, #4b1e15 0%, #dd2476 100%); }
-.highlight-3 { background: linear-gradient(135deg, #164225 0%, #38f9d7 100%); }
-
-/* OUT-OF-BOX glow behind the card */
-.highlight-card::before {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    inset: -10px;
-    border-radius: 24px;
-    filter: blur(18px);
-    opacity: 0.85;
-    background: var(--glow, linear-gradient(135deg, #9c6bff, #4ecdc4));
-    transition: filter .25s ease, opacity .25s ease, transform .25s ease;
-}
-.highlight-card:hover::before { filter: blur(22px); opacity: 1; transform: scale(1.02); }
-
-/* Per-card glow colors matching their backgrounds */
-.highlight-1 { --glow: linear-gradient(135deg, #5cb0c3, #3a7bd5); }
-.highlight-2 { --glow: linear-gradient(135deg, #ff512f, #dd2476); }
-.highlight-3 { --glow: linear-gradient(135deg, #31894e, #38f9d7); }
-
-.highlight-card::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: 18px;
-    background: radial-gradient(1200px 200px at var(--mx,50%) 120%, rgba(138, 8, 224, 0.25), transparent 100%);
-    opacity: 0;
-    transition: opacity .30s ease;
+  const notesData = [
+    // Semester 1 subjects (six requested)
+    {
+      id: 1,
+      title: "Mathematics-1",
+      subject: "Mathematics-1",
+      semester: "1",
+      description: "Limits, differentiation, integration, and series with examples.",
+      downloadUrl: "https://drive.google.com/drive/folders/15AjBdZI7flmx6GDwMIlUjoYcf2Y1eTSU?usp=drive_link",
+      viewUrl: "https://drive.google.com/drive/folders/15AjBdZI7flmx6GDwMIlUjoYcf2Y1eTSU?usp=drive_link",
+      uploadDate: "2025-07-15",
+      fileSize: "1.2 MB"
+    },
+    {
+      id: 2,
+      title: "Physics-1",
+      subject: "Physics-1",
+      semester: "1",
+      description: "Mechanics, waves, optics basics with derivations and numericals.",
+      downloadUrl: "https://drive.google.com/drive/folders/18wTiyF310vpw6zlWxPxec8hpNNcC-k3E?usp=drive_link",
+      viewUrl: "https://drive.google.com/drive/folders/18wTiyF310vpw6zlWxPxec8hpNNcC-k3E?usp=drive_link",
+      uploadDate: "2025-07-16",
+      fileSize: "1.0 MB"
+    },
+    {
+      id: 3,
+      title: "Fundamentals of Programming",
+      subject: "Fundamentals of Programming",
+      semester: "1",
+      description: "Variables, control flow, functions, arrays, and simple problems.",
+      downloadUrl: "https://drive.google.com/drive/folders/1MexdJhE10cOxlcESGd7llKuNSdlL0RRD?usp=drive_link",
+      viewUrl: "https://drive.google.com/drive/folders/1MexdJhE10cOxlcESGd7llKuNSdlL0RRD?usp=drive_link",
+      uploadDate: "2025-07-17",
+      fileSize: "900 KB"
+    },
+    {
+      id: 4,
+      title: "Descriptive Statistics",
+      subject: "Descriptive Statistics",
+      semester: "1",
+      description: "Mean, median, mode, variance, visualization, and data summaries.",
+      downloadUrl: "https://drive.google.com/drive/folders/1-oXkJACVUtBf0-PNAuzruc8XP9hVHj_e?usp=drive_link",
+      viewUrl: "https://drive.google.com/drive/folders/1-oXkJACVUtBf0-PNAuzruc8XP9hVHj_e?usp=drive_link",
+      uploadDate: "2025-07-18",
+      fileSize: "800 KB"
+    },
+    {
+      id: 5,
+      title: "Introduction to Computer Science",
+      subject: "Introduction to Computer Science",
+      semester: "1",
+      description: "Computers, OS, networks, algorithms, data, and real-world applications.",
+      downloadUrl: "https://drive.google.com/drive/folders/1SckE3hbwwyGiviOCImzYVsDSI715_BuT?usp=drive_link",
+      viewUrl: "https://drive.google.com/drive/folders/1SckE3hbwwyGiviOCImzYVsDSI715_BuT?usp=drive_link",
+      uploadDate: "2025-07-19",
+      fileSize: "1.1 MB"
+    },
+    {
+      id: 6,
+      title: "Fundamentals of Electronics",
+      subject: "Fundamentals of Electronics",
+      semester: "1",
+      description: "Semiconductors, diodes, transistors, basic circuits and applications.",
+      downloadUrl: "https://drive.google.com/drive/folders/1-VeW2ymPHykaVmDkz_BzwofkfM39zAfv?usp=drive_link",
+      uploadDate: "2025-07-20",
+      fileSize: "950 KB"
+    },
+    // Semester 2 examples
    
-    
-}
-.highlight-card:hover::after { opacity: 2; }
-
-@media (max-width: 900px) {
-    .highlight-grid { grid-template-columns: 1fr; }
-}
-
-/* Blink animation for highlight card on click */
-.highlight-card.blinking {
-    animation: cardBlink 0.8s ease-in-out 3;
-}
-
-@keyframes cardBlink {
-    0%, 100% { box-shadow: 0 14px 30px rgba(0,0,0,0.45); transform: translateY(0) scale(1); }
-    50% { box-shadow: 0 0 0 3px rgba(255,255,255,0.25), 0 30px 60px rgba(0,0,0,0.6); transform: translateY(-2px) scale(1.02); }
-}
-
-/* Floating small box to show highlighted text */
-.highlight-toast {
-    position: absolute;
-    top: -12px;
-    right: -12px;
-    background: linear-gradient(135deg, #110b1c 0%, #150725 100%);
-    color: #e7c416;
-    border: 1px solid rgba(255,255,255,0.18);
-    border-radius: 10px;
-    padding: 8px 12px;
-    font-size: 0.9rem;
-    box-shadow: 0 10px 24px rgba(0,0,0,0.5);
-    opacity: 0;
-    transform: translateY(-6px);
-    pointer-events: none;
-    transition: opacity .2s ease, transform .2s ease;
-    z-index: 2;
-}
-
-.highlight-toast.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Improve button contrast on dark sections */
-#search .btn-secondary,
-#notes .btn-secondary,
-#pyqs .btn-secondary,
-#updates .btn-secondary,
-#contact .btn-secondary {
-    color: rgb(243, 240, 240);
-    border-color: rgb(230, 215, 215);
-}
-
-#search .btn-secondary:hover,
-#notes .btn-secondary:hover,
-#pyqs .btn-secondary:hover,
-#updates .btn-secondary:hover,
-#contact .btn-secondary:hover {
-    background-color: rgb(211, 201, 201);
-    color: #010206;
-}
-
-/* Card and control shadows for main sections */
-#search input,
-#search .btn {
-    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
-}
-
-.note-card,
-.pyq-card,
-.update-card,
-#contact .contact-card {
-    position: relative;
-    background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
-    border-radius: 16px;
-    border: 1px solid rgba(255,255,255,0.12);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(8px);
-    overflow: hidden;
-}
-
-.note-card:hover,
-.pyq-card:hover,
-.update-card:hover,
-#contact .contact-card:hover {
-    box-shadow: 0 20px 44px rgba(0, 0, 0, 0.6);
-    transform: translateY(-6px) rotateX(2deg) rotateY(-1deg);
-    transition: transform 220ms ease, box-shadow 220ms ease;
-}
-
-/* Buttons inside cards get subtle lift */
-.btn-small {
-    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
-}
-.btn-small:hover {
-    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.4);
-}
-
-/* Gradient border ring using pseudo-element */
-.note-card::before,
-.pyq-card::before,
-.update-card::before,
-#contact .contact-card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: 16px;
-    padding: 1px; /* border thickness */
-    background: linear-gradient(135deg, #9c6bff, #4ecdc4, #ffd166);
-    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-    -webkit-mask-composite: xor;
-            mask-composite: exclude;
-    pointer-events: none;
-}
-
-/* Card inner spacing and header */
-.card-header {
-    display: flex;
-    gap: 12px;
-    align-items: center;
-    padding: 16px 16px 8px 16px;
-}
-.card-icon {
-    width: 42px;
-    height: 42px;
-    border-radius: 10px;
-    display: grid;
-    place-items: center;
-    color: #fff;
-    background: linear-gradient(135deg, #8a5cf6, #b563ec);
-    box-shadow: 0 10px 20px rgba(181, 99, 236, 0.4);
-}
-.card-title { margin: 0; }
-.card-meta { color: rgba(255,255,255,0.8); font-size: 0.9rem; display: flex; gap: 12px; }
-.card-description { padding: 0 16px 12px 16px; color: rgba(255,255,255,0.9); }
-.card-actions { padding: 0 16px 16px 16px; display:flex; gap:10px; flex-wrap: wrap; }
-
-/* Subject accent glows for notes */
-.note-card[data-subject="mathematics"] .card-icon { background: linear-gradient(135deg, #00d2ff, #3a7bd5); box-shadow: 0 10px 20px rgba(58,123,213,0.4); }
-.note-card[data-subject="computer-science"] .card-icon { background: linear-gradient(135deg, #ff512f, #dd2476); box-shadow: 0 10px 20px rgba(221,36,118,0.45); }
-.note-card[data-subject="physics"] .card-icon { background: linear-gradient(135deg, #11998e, #38ef7d); box-shadow: 0 10px 20px rgba(56,239,125,0.35); }
-.note-card[data-subject="chemistry"] .card-icon { background: linear-gradient(135deg, #f7971e, #ffd200); box-shadow: 0 10px 20px rgba(247,151,30,0.4); }
-
-/* Tabs refresh */
-.tab-btn {
-    padding: 10px 16px;
-    border-radius: 999px;
-    border: 1px solid rgba(255,255,255,0.25);
-    color: #f2eeee;
-    background: rgba(255,255,255,0.05);
-    backdrop-filter: blur(6px);
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-.tab-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(0,0,0,0.35); }
-.tab-btn.active { background: linear-gradient(135deg, #8a5cf6, #b563ec); border-color: transparent; box-shadow: 0 10px 22px rgba(181, 99, 236, 0.45); }
-
-/* Micro-interactions for primary buttons */
-.btn-primary { transform: translateZ(0); }
-.btn-primary:hover { filter: brightness(1.05); transform: translateY(-2px); }
-.btn-primary:active { transform: translateY(0); }
-
-/* Segmented controls for semester filters */
-.seg-controls { display: inline-flex; gap: 8px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 999px; padding: 6px; }
-.seg-btn { background: transparent; color: #f2eeee; border: none; border-radius: 999px; padding: 8px 14px; cursor: pointer; transition: all .2s ease; }
-.seg-btn:hover { background: rgba(255,255,255,0.06); }
-.seg-btn.active { background: linear-gradient(135deg, #8a5cf6, #b563ec); color: #fff; box-shadow: 0 8px 18px rgba(181,99,236,0.35); }
-
-/* Motion safety */
-@media (prefers-reduced-motion: reduce) {
-    .note-card:hover,
-    .pyq-card:hover,
-    .update-card:hover,
-    #contact .contact-card:hover,
-    .tab-btn:hover,
-    .btn-primary:hover {
-        transform: none;
-        transition: none;
+    ,
+    // Semester 2 subjects (six requested)
+    {
+      id: 9,
+      title: "Microprocessor",
+      subject: "Microprocessor",
+      semester: "2",
+      description: "Architecture, instruction set, addressing modes, and interfacing basics.",
+      downloadUrl: "",
+      viewUrl: "",
+      uploadDate: "2025-08-10",
+      fileSize: "1.5 MB"
+    },
+    {
+      id: 10,
+      title: "Advance Excel",
+      subject: "Advance Excel",
+      semester: "2",
+      description: "Formulas, pivot tables, charts, Power Query, and automation tips.",
+      downloadUrl: "",
+      viewUrl: "",
+      uploadDate: "2025-08-11",
+      fileSize: "1.0 MB"
+    },
+    {
+      id: 11,
+      title: "Communication skills",
+      subject: "Communication skills",
+      semester: "2",
+      description: "Written, verbal, presentation, and professional etiquette essentials.",
+      downloadUrl: "",
+      viewUrl: "",
+      uploadDate: "2025-08-12",
+      fileSize: "700 KB"
+    },
+    {
+      id: 12,
+      title: "Mathematics-II",
+      subject: "Mathematics-II",
+      semester: "2",
+      description: "Differential equations, Laplace transforms, and vector calculus.",
+      downloadUrl: "",
+      viewUrl: "",
+      uploadDate: "2025-08-13",
+      fileSize: "1.3 MB"
+    },
+    {
+      id: 13,
+      title: "Physics-II",
+      subject: "Physics-II",
+      semester: "2",
+      description: "Electricity, magnetism, modern physics, and semiconductor basics.",
+      downloadUrl: "",
+      viewUrl: "",
+      uploadDate: "2025-08-14",
+      fileSize: "1.1 MB"
+    },
+    {
+      id: 14,
+      title: "Indian Knowledge system",
+      subject: "Indian Knowledge system",
+      semester: "2",
+      description: "Overview of traditional knowledge frameworks and applications.",
+      downloadUrl: "",
+      viewUrl: "",
+      uploadDate: "2025-08-15",
+      fileSize: "600 KB"
     }
-}
-/* Section background — keep this as your main dark shade */
-.section,
-.hero {
-  background: #0f0f1a; /* same dark color for consistency */
-}
+  ];
+  
+  const pyqData = [
+    {
+      id: 1,
+      title: "Sem 1",
+      subject: "Sem 1",
+      semester: "1",
+      year: "2024",
+      exam: "Firt Sem",
+      description: "First Semester PYQ'a",
+      downloadUrl: "https://drive.google.com/file/d/1-AEYzkwqN6NbFngJloTwdwAasBGkFMZ2/view?usp=drive_link",
+      viewUrl: "https://drive.google.com/file/d/1-AEYzkwqN6NbFngJloTwdwAasBGkFMZ2/view?usp=drive_link"
+      }
+  ];
+  
+  const updatesData = [
+    {
+      id: 1,
+      title: "New Semester Registration Open",
+      content: "Complete course registration by Oct 15, 2025. Late fee applies after the deadline.",
+      date: "2025-09-23",
+      priority: "high"
+    },
+    {
+      id: 2,
+      title: "Lab Timetable Published",
+      content: "Updated lab slots for CSE and ECE are now available on the notice board.",
+      date: "2025-09-20",
+      priority: "medium"
+    },
+    {
+      id: 3,
+      title: "Library Extended Hours",
+      content: "Library open 24/7 during exam week with extra group study rooms.",
+      date: "2025-09-18",
+      priority: "low"
+    }
+  ];
+  
 
-/* Info/stat boxes container strip (the row with 3 boxes) */
-.stats-strip {               /* add this class to the row wrapper if not present */
-  background: transparent;   /* remove tinted overlay behind the boxes */
-}
+  let hamburger, navMenu, searchInput, searchBtn, notesGrid, pyqGrid, updatesGrid, yearSelect;
+  let activeNoteSemester = 'all';
+  let activePyqSemester = 'all';
+  
 
-/* The three boxes themselves */
-.info-card {                  /* add this class on each box */
-  background: rgba(17, 17, 28, 0.88); /* darker, closer to section background */
-  border: 1px solid rgba(255,255,255,0.06); /* subtle border, optional */
-  box-shadow: 0 6px 18px rgba(0,0,0,0.25);  /* reduce glow */
-  backdrop-filter: none;                   /* turn off glassmorphism blur */
-}
+  document.addEventListener('DOMContentLoaded', () => {
+    // Cache elements
+    hamburger = document.getElementById('hamburger');
+    navMenu = document.getElementById('nav-menu');
+    searchInput = document.getElementById('searchInput');
+    searchBtn = document.getElementById('searchBtn');
+    notesGrid = document.getElementById('notesGrid');
+    pyqGrid = document.getElementById('pyqGrid');
+    updatesGrid = document.getElementById('updatesGrid');
+    yearSelect = document.getElementById('yearSelect');
+  
+    // Basic sanity logs for debugging
+    console.log('script loaded, DOM ready');
+    console.log('containers:', { notesGrid, pyqGrid, updatesGrid });
+  
+    setupEventListeners();
+    renderNotes(notesData);
+    renderPYQs(pyqData);
+    renderUpdates(updatesData);
+    // observeSections(); // Disabled - removed disturbing slide animation
+    addBackToTop();
 
-/* If your current boxes reuse .note-card or similar, you can target them directly */
-.note-card.stats,
-.card--stat,
-.feature-pill {
-  background: rgba(17, 17, 28, 0.88) !important;
-  border-color: rgba(255,255,255,0.06) !important;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.25) !important;
-}
+    // Highlight card hover behavior for all three cards
+    const highlightCards = document.querySelectorAll('#highlights .highlight-card');
+    highlightCards.forEach(card => {
+      const ensureToast = () => {
+        let toast = card.querySelector('.highlight-toast');
+        if (!toast) {
+          toast = document.createElement('div');
+          toast.className = 'highlight-toast';
+          card.appendChild(toast);
+        }
+        return toast;
+      };
 
-/* Remove gradient/tint from the strip behind the boxes if it exists */
-.section .strip-overlay {
-  background: transparent !important;
-}
+      card.addEventListener('mouseenter', () => {
+        // Restart blink animation
+        card.classList.remove('blinking');
+        // eslint-disable-next-line no-unused-expressions
+        card.offsetHeight;
+        card.classList.add('blinking');
 
-/* Reduce border-radius to look less “badge-like” if desired */
-.info-card,
-.card--stat {
-  border-radius: 14px;
-}
+        const titleEl = card.querySelector('h3');
+        const message = titleEl ? titleEl.textContent : '';
+        const toast = ensureToast();
+        toast.textContent = message;
+        toast.classList.add('show');
+      });
 
-/* Optional: make text pop on the darker card */
-.info-card h4,
-.card--stat h4 {
-  color: #e8e8f2;
-}
-.info-card p,
-.card--stat p {
-  color: #b8b8c9;
-}
-/* Reset default blue links */
-a {
-    color: inherit;
-    text-decoration: none;
+      card.addEventListener('mouseleave', () => {
+        const toast = card.querySelector('.highlight-toast');
+        if (toast) toast.classList.remove('show');
+        card.classList.remove('blinking');
+      });
+    });
+  });
+  
+  function setupEventListeners() {
+    // Segmented semester controls
+    document.querySelectorAll('.seg-controls').forEach(group => {
+      const target = group.dataset.target; // 'notes' or 'pyqs'
+      group.querySelectorAll('.seg-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          group.querySelectorAll('.seg-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const sem = btn.dataset.sem || 'all';
+          if (target === 'notes') {
+            activeNoteSemester = sem;
+            applyAllFiltersAndRenderNotes();
+          } else if (target === 'pyqs') {
+            activePyqSemester = sem;
+            applyAllFiltersAndRenderPyqs();
+          }
+        });
+      });
+    });
+    // Mobile menu toggle
+    if (hamburger && navMenu) {
+      hamburger.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+        hamburger.classList.toggle('active');
+      });
+    }
+  
+    // Close mobile menu when clicking nav links
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu && navMenu.classList.remove('active');
+        hamburger && hamburger.classList.remove('active');
+      });
+    });
+  
+    // Search
+    if (searchInput && searchBtn) {
+      const debounced = debounce(handleSearch, 300);
+      searchInput.addEventListener('input', debounced);
+      searchInput.addEventListener('keypress', e => {
+        if (e.key === 'Enter') handleSearch();
+      });
+      searchBtn.addEventListener('click', handleSearch);
+    }
+  
+    // Notes filter tabs
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', e => {
+        const category = e.currentTarget.dataset.category || 'all';
+        filterNotes(category);
+        document.querySelectorAll('.tab-btn').forEach(t => t.classList.remove('active'));
+        e.currentTarget.classList.add('active');
+      });
+    });
+  
+    // Year filter for PYQs
+    if (yearSelect) {
+      yearSelect.addEventListener('change', e => {
+        filterPYQs(e.target.value);
+      });
+    }
+  
+    // Smooth scrolling for in-page anchors with header offset
+    attachSmoothScroll();
   }
   
-  /* Modern inline link style */
-  .link,
-  .section a:not(.btn):not(.btn-small):not(.nav-link):not(.social-links a) {
-    position: relative;
-    color: #cfd2ff;               /* soft indigo for dark bg */
-    text-decoration: none;
-    transition: color .2s ease;
+ 
+  function getHeaderOffset() {
+    const header = document.querySelector('.header');
+    return header ? header.offsetHeight : 0;
   }
   
-  .link:hover,
-  .section a:not(.btn):not(.btn-small):not(.nav-link):not(.social-links a):hover {
-    color: #ffffff;               /* brighter on hover */
+  function smoothScrollTo(targetSelector) {
+    const target = document.querySelector(targetSelector);
+    if (!target) return;
+    const offset = getHeaderOffset();
+    const rect = target.getBoundingClientRect();
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const top = rect.top + scrollTop - offset;
+  
+    window.scrollTo({ top, behavior: 'smooth' });
   }
   
-  /* Animated underline on hover (from center) */
-  .link::after,
-  .section a:not(.btn):not(.btn-small):not(.nav-link):not(.social-links a)::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    bottom: -2px;
-    width: 0;
-    height: 2px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    transition: width .25s ease, left .25s ease;
-    border-radius: 2px;
+  function attachSmoothScroll() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href && href.length > 1) {
+          e.preventDefault();
+          smoothScrollTo(href);
+        }
+      });
+    });
+  
+    // Handle direct hash on load
+    if (location.hash && document.querySelector(location.hash)) {
+      setTimeout(() => smoothScrollTo(location.hash), 0);
+    }
   }
   
-  .link:hover::after,
-  .section a:not(.btn):not(.btn-small):not(.nav-link):not(.social-links a):hover::after {
-    width: 100%;
-    left: 0;
-  }
-  
-  /* Focus-visible for accessibility */
-  .link:focus-visible,
-  .section a:not(.btn):not(.btn-small):not(.nav-link):not(.social-links a):focus-visible {
-    outline: 2px solid #ffd86b;
-    outline-offset: 3px;
-    border-radius: 4px;
-  }
-  .card-actions a.btn-small {
-    background: rgba(255,255,255,0.06);
-    color: #e9e9f6;
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 10px;
-    padding: 10px 14px;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    transition: transform .15s ease, background .2s ease, border-color .2s ease;
-  }
-  
-  .card-actions a.btn-small:hover {
-    transform: translateY(-2px);
-    background: rgba(255,255,255,0.10);
-    border-color: rgba(255,255,255,0.18);
-  }
-  
-  .btn-download i { color: #7ddc7a; }   /* subtle green */
-  .btn-view i     { color: #78c7ff; }   /* subtle blue */
-  .footer-madeby{display:flex;gap:12px;align-items:center;color:#bfc2d9;margin-top:8px}
-.footer-madeby .link{color:#cfd2ff}
-/* Prevent overlap: respect fixed header and stacking */
-html { scroll-padding-top: 90px; }
-.section { position: relative; z-index: 1; padding: 60px 0; }
-.header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; }
-.container, .section { overflow: visible; }
 
-/* Contact specific styles */
-.contact-section { background: #0f0f1a; } /* same as your dark sections */
-.contact-intro {
-  max-width: 720px; margin: 0 auto 20px; color: #bfc2d9; text-align: center;
-}
-.contact-card{
-  max-width:720px;margin:12px auto 8px;padding:20px;
-  background:#11111c;border:1px solid rgba(255,255,255,.06);
-  border-radius:16px;display:flex;gap:16px;align-items:center;
-  box-shadow:0 10px 30px rgba(0,0,0,.25)
-}
-.contact-avatar{
-  width:64px;height:64px;border-radius:50%;
-  background:linear-gradient(135deg,#667eea,#764ba2);
-  display:flex;align-items:center;justify-content:center;flex:0 0 64px;
-  color:#fff;font-weight:700;font-size:1.25rem
-}
-.avatar-initial{letter-spacing:.5px}
-.contact-info{display:flex;flex-direction:column;gap:6px}
-.contact-name{margin:0;color:#e9e9f6}
-.contact-role{margin:0;color:#a7abc8;font-size:.95rem}
-.btn-linkedin{
-  display:inline-flex;align-items:center;gap:8px;
-  background:#0A66C2;color:#fff;border:none;border-radius:10px;
-  padding:10px 16px;text-decoration:none;
-  transition:transform .15s ease,background .2s ease
-}
-.btn-linkedin:hover{background:#095aaa;transform:translateY(-2px)}
-/* Container (optional alignment) */
-.dept-actions {
-    display: flex;
-    justify-content: center;   /* center it; use flex-start if left align */
-    margin: 16px 0;
+  function handleSearch() {
+    if (!searchInput) return;
+    const q = searchInput.value.toLowerCase().trim();
+  
+    let baseNotes = notesData;
+    if (activeNoteSemester !== 'all') {
+      baseNotes = baseNotes.filter(n => n.semester === activeNoteSemester);
+    }
+    const filteredNotes = q
+      ? baseNotes.filter(n =>
+          n.title.toLowerCase().includes(q) ||
+          n.description.toLowerCase().includes(q) ||
+          n.subject.toLowerCase().includes(q)
+        )
+      : baseNotes;
+  
+    let basePyqs = pyqData;
+    if (activePyqSemester !== 'all') {
+      basePyqs = basePyqs.filter(p => p.semester === activePyqSemester);
+    }
+    const filteredPYQs = q
+      ? basePyqs.filter(p =>
+          p.title.toLowerCase().includes(q) ||
+          p.subject.toLowerCase().includes(q) ||
+          p.description.toLowerCase().includes(q)
+        )
+      : basePyqs;
+  
+    renderNotes(filteredNotes);
+    renderPYQs(filteredPYQs);
   }
   
-  /* Base button style */
-  .dept-link {
-    display: inline-flex;
-    align-items: left;
-    gap: 10px;
-    padding: 12px 18px;
-    border-radius: 12px;
-    text-decoration: none;
-    font-weight: 700;                 /* bold black text */
-    color: #060101;                   /* black text */
-    border: 1px solid transparent;
-    transition: transform .15s ease, box-shadow .2s ease, background-color .2s ease, border-color .2s ease;
+  function filterNotes(category) {
+    let list = notesData;
+    if (category !== 'all') list = list.filter(n => n.subject === category);
+    if (activeNoteSemester !== 'all') list = list.filter(n => n.semester === activeNoteSemester);
+    renderNotes(list);
   }
   
-  /* Light green background variant */
-  .dept-link--green {
-    background-color: #1da911;        /* light green */
-    border-color: #a6eea0;            /* subtle border */
+  function filterPYQs(year) {
+    let list = pyqData;
+    if (year !== 'all') list = list.filter(p => p.year === year);
+    if (activePyqSemester !== 'all') list = list.filter(p => p.semester === activePyqSemester);
+    renderPYQs(list);
   }
-  
-  /* Hover/active/focus states for modern feel and accessibility */
-  .dept-link--green:hover {
-    background-color: #7a11b2;        /* slightly darker on hover */
-    box-shadow: 0 8px 20px rgba(237, 230, 22, 0.25);
-    transform: translateY(-2px);
-  }
-  
-  .dept-link--green:active {
-    transform: translateY(0);
-    box-shadow: 0 4px 12px rgba(74, 222, 128, 0.2);
-  }
-  
-  .dept-link--green:focus-visible {
-    outline: 3px solid #7bdc7a;       /* accessible focus ring */
-    outline-offset: 3px;
-  }
-  
-  /* Icon sizing */
-  .dept-link i {
-    font-size: 1.05rem;
-    color: #0b0b0b;                   /* keep icon black to match text */
-  }
-  
-  /* Optional: make it full-width on mobile */
-  @media (max-width: 480px) {
-    .dept-link { width: 100%; justify-content: center; }
-  }
-  /* CERN-style white navbar */
-.header {
-    background: transparent;
-    box-shadow: none;
-     border: none;
-}
 
-.navbar-shell {
-    background: #0f0808;
-    border: white;
-    border-radius: 999px;
-    margin: 16px auto;
-    max-width: 1250px;
-    box-shadow: 0 6px 20px rgba(240, 236, 11, 0.08);
-    border: 1px solid rgba(242, 242, 243, 0.208); 
-}
+  function applyAllFiltersAndRenderNotes() {
+    const activeTab = document.querySelector('.tab-btn.active');
+    const cat = activeTab ? (activeTab.dataset.category || 'all') : 'all';
+    filterNotes(cat);
+  }
 
-/* Inner layout */
-.header .container {
-    padding: 10px 24px;
-}
+  function applyAllFiltersAndRenderPyqs() {
+    const year = yearSelect ? (yearSelect.value || 'all') : 'all';
+    filterPYQs(year);
+  }
+  
 
+  function renderNotes(notes) {
+    if (!notesGrid) return;
+    if (!notes || notes.length === 0) {
+      notesGrid.innerHTML = emptyState("No notes found", "Try adjusting your search or filters.");
+      return;
+    }
+  
+    notesGrid.innerHTML = notes.map(note => `
+      <div class="note-card" data-subject="${note.subject}">
+        <div class="card-header">
+          <div class="card-icon"><i class="fas fa-book-open"></i></div>
+          <div>
+            <h3 class="card-title">${escapeHtml(note.title)}</h3>
+            <div class="card-meta">
+              <span><i class="fas fa-calendar"></i> ${formatDate(note.uploadDate)}</span>
+              <span><i class="fas fa-file-alt"></i> ${escapeHtml(note.fileSize)}</span>
+            </div>
+          </div>
+        </div>
+        <p class="card-description">${escapeHtml(note.description)}</p>
+        <div class="card-actions">
+          <a href="${note.downloadUrl}" class="btn-small btn-download"><i class="fas fa-download"></i> Download</a>
+          <a href="${note.viewUrl}" class="btn-small btn-view"><i class="fas fa-eye"></i> Preview</a>
+        </div>
+      </div>
+    `).join('');
+  
+    animateCards('.note-card');
+  }
+  
+  function renderPYQs(pyqs) {
+    if (!pyqGrid) return;
+    if (!pyqs || pyqs.length === 0) {
+      pyqGrid.innerHTML = emptyState("No question papers found", "Try selecting a different year or search term.");
+      return;
+    }
+  
+    pyqGrid.innerHTML = pyqs.map(pyq => `
+      <div class="pyq-card">
+        <div class="card-header">
+          <div class="card-icon"><i class="fas fa-file-alt"></i></div>
+          <div>
+            <h3 class="card-title">${escapeHtml(pyq.title)}</h3>
+            <div class="card-meta">
+              <span><i class="fas fa-graduation-cap"></i> ${escapeHtml(pyq.subject)}</span>
+              <span><i class="fas fa-calendar-alt"></i> ${escapeHtml(pyq.year)} - ${escapeHtml(pyq.exam)}</span>
+            </div>
+          </div>
+        </div>
+        <p class="card-description">${escapeHtml(pyq.description)}</p>
+        <div class="card-actions">
+          <a href="${pyq.downloadUrl}" class="btn-small btn-download"><i class="fas fa-download"></i> Download</a>
+          <a href="${pyq.viewUrl}" class="btn-small btn-view"><i class="fas fa-eye"></i> View</a>
+        </div>
+      </div>
+    `).join('');
+  
+    animateCards('.pyq-card');
+  }
+  
+  function renderUpdates(updates) {
+    if (!updatesGrid) return;
+    if (!updates || updates.length === 0) {
+      updatesGrid.innerHTML = emptyState("No updates yet", "Check back later for announcements.");
+      return;
+    }
+  
+    updatesGrid.innerHTML = updates.map(update => `
+      <div class="update-card">
+        <div class="update-date"><i class="fas fa-clock"></i> ${formatDate(update.date)}</div>
+        <h3 class="update-title">${escapeHtml(update.title)}</h3>
+        <p class="update-content">${escapeHtml(update.content)}</p>
+        <span class="update-priority priority-${update.priority}">${update.priority.toUpperCase()} PRIORITY</span>
+      </div>
+    `).join('');
+  
+    animateCards('.update-card');
+  }
+  
+  function formatDate(dateString) {
+    const date = new Date(dateString);
+    const opts = { year: 'numeric', month: 'long', day: 'numeric' };
+    return isNaN(date) ? dateString : date.toLocaleDateString('en-US', opts);
+  }
+  
+  function debounce(fn, wait) {
+    let t;
+    return (...args) => {
+      clearTimeout(t);
+      t = setTimeout(() => fn(...args), wait);
+    };
+  }
+  
+  function animateCards(selector) {
+    document.querySelectorAll(selector).forEach((card, i) => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(20px)';
+      setTimeout(() => {
+        card.style.transition = 'all 0.5s ease';
+        card.style.opacity = '1';
+        card.style.transform = 'translateY(0)';
+      }, i * 80);
+    });
+  }
+  
+  function emptyState(title, message) {
+    return `
+      <div class="no-results" style="text-align:center;padding:2rem;background:#fff;border-radius:10px;box-shadow:0 5px 15px rgba(0,0,0,0.06);">
+        <h3 style="margin-bottom:0.5rem;">${escapeHtml(title)}</h3>
+        <p style="color:#666;">${escapeHtml(message)}</p>
+      </div>
+    `;
+  }
+  
+  function escapeHtml(s) {
+    return String(s)
+      .replaceAll('&', '&amp;')
+      .replaceAll('<', '&lt;')
+      .replaceAll('>', '&gt;')
+      .replaceAll('"', '&quot;')
+      .replaceAll("'", '&#039;');
+  }
+  
 
-    
+  // Disabled - removed disturbing slide animation
+  function observeSections() {
+    // Function disabled to prevent slide-in animations on scroll
+    return;
+
+  }
+  
+ 
+  function addBackToTop() {
+    const btn = document.createElement('button');
+    btn.innerHTML = '<i class="fas fa-arrow-up"></i>';
+    btn.className = 'back-to-top';
+    btn.style.cssText = `
+      position: fixed; bottom: 20px; right: 20px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white; border: none; border-radius: 50%;
+      width: 50px; height: 50px; font-size: 20px; cursor: pointer;
+      opacity: 0; transition: all 0.3s ease; z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    `;
+    document.body.appendChild(btn);
+  
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        btn.style.opacity = '1';
+        btn.style.transform = 'scale(1)';
+      } else {
+        btn.style.opacity = '0';
+        btn.style.transform = 'scale(0.8)';
+      }
+    });
+  
+    btn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+  
