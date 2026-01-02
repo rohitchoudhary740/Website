@@ -1,5 +1,13 @@
- const notesData = [
-   
+/***********************
+ * Academic Portal JS
+ * - Renders Notes, PYQs, Updates
+ * - Search and Filters
+ * - Smooth scroll with fixed header offset
+ ***********************/
+
+/* ========== Demo Data (replace later with real content) ========== */
+  const notesData = [
+    // Semester 1 subjects (six requested)
     {
       id: 1,
       title: "Mathematics-1",
@@ -65,7 +73,10 @@
       uploadDate: "2025-07-20",
       fileSize: "950 KB"
     },
+    // Semester 2 examples
    
+    ,
+    // Semester 2 subjects (six requested)
     {
       id: 9,
       title: "Microprocessor",
@@ -172,12 +183,14 @@
     }
   ];
   
+  /* ========== DOM References (safe to query after DOMContentLoaded) ========== */
   let hamburger, navMenu, searchInput, searchBtn, notesGrid, pyqGrid, updatesGrid, yearSelect;
   let activeNoteSemester = 'all';
   let activePyqSemester = 'all';
   
+  /* ========== Initialization ========== */
   document.addEventListener('DOMContentLoaded', () => {
-   
+    // Cache elements
     hamburger = document.getElementById('hamburger');
     navMenu = document.getElementById('nav-menu');
     searchInput = document.getElementById('searchInput');
@@ -187,7 +200,7 @@
     updatesGrid = document.getElementById('updatesGrid');
     yearSelect = document.getElementById('yearSelect');
   
-   
+    // Basic sanity logs for debugging
     console.log('script loaded, DOM ready');
     console.log('containers:', { notesGrid, pyqGrid, updatesGrid });
   
@@ -195,10 +208,10 @@
     renderNotes(notesData);
     renderPYQs(pyqData);
     renderUpdates(updatesData);
-    observeSections();
+    // observeSections(); // Disabled - removed disturbing slide animation
     addBackToTop();
 
-    
+    // Highlight card hover behavior for all three cards
     const highlightCards = document.querySelectorAll('#highlights .highlight-card');
     highlightCards.forEach(card => {
       const ensureToast = () => {
@@ -212,9 +225,9 @@
       };
 
       card.addEventListener('mouseenter', () => {
-        
+        // Restart blink animation
         card.classList.remove('blinking');
-        
+        // eslint-disable-next-line no-unused-expressions
         card.offsetHeight;
         card.classList.add('blinking');
 
@@ -233,11 +246,11 @@
     });
   });
   
- 
+  /* ========== Event Listeners ========== */
   function setupEventListeners() {
-    
+    // Segmented semester controls
     document.querySelectorAll('.seg-controls').forEach(group => {
-      const target = group.dataset.target;
+      const target = group.dataset.target; // 'notes' or 'pyqs'
       group.querySelectorAll('.seg-btn').forEach(btn => {
         btn.addEventListener('click', () => {
           group.querySelectorAll('.seg-btn').forEach(b => b.classList.remove('active'));
@@ -253,7 +266,7 @@
         });
       });
     });
-  
+    // Mobile menu toggle
     if (hamburger && navMenu) {
       hamburger.addEventListener('click', () => {
         navMenu.classList.toggle('active');
@@ -261,6 +274,7 @@
       });
     }
   
+    // Close mobile menu when clicking nav links
     document.querySelectorAll('.nav-link').forEach(link => {
       link.addEventListener('click', () => {
         navMenu && navMenu.classList.remove('active');
@@ -268,8 +282,17 @@
       });
     });
   
-     
-   
+    // Search
+    if (searchInput && searchBtn) {
+      const debounced = debounce(handleSearch, 300);
+      searchInput.addEventListener('input', debounced);
+      searchInput.addEventListener('keypress', e => {
+        if (e.key === 'Enter') handleSearch();
+      });
+      searchBtn.addEventListener('click', handleSearch);
+    }
+  
+    // Notes filter tabs
     document.querySelectorAll('.tab-btn').forEach(btn => {
       btn.addEventListener('click', e => {
         const category = e.currentTarget.dataset.category || 'all';
@@ -279,17 +302,18 @@
       });
     });
   
+    // Year filter for PYQs
     if (yearSelect) {
       yearSelect.addEventListener('change', e => {
         filterPYQs(e.target.value);
       });
     }
   
-   
+    // Smooth scrolling for in-page anchors with header offset
     attachSmoothScroll();
   }
   
- 
+  /* ========== Smooth Scroll with Fixed Header Offset ========== */
   function getHeaderOffset() {
     const header = document.querySelector('.header');
     return header ? header.offsetHeight : 0;
@@ -461,7 +485,7 @@
     animateCards('.update-card');
   }
   
- 
+  /* ========== Utilities ========== */
   function formatDate(dateString) {
     const date = new Date(dateString);
     const opts = { year: 'numeric', month: 'long', day: 'numeric' };
@@ -506,8 +530,12 @@
       .replaceAll("'", '&#039;');
   }
   
-
+  /* ========== Section Observe (subtle entrance) ========== */
+  // Disabled - removed disturbing slide animation
   function observeSections() {
+    // Function disabled to prevent slide-in animations on scroll
+    return;
+    /*
     const sections = document.querySelectorAll('.section');
     const obs = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -524,8 +552,10 @@
       sec.style.transition = 'all 0.8s ease';
       obs.observe(sec);
     });
+    */
   }
   
+  /* ========== Back to Top ========== */
   function addBackToTop() {
     const btn = document.createElement('button');
     btn.innerHTML = '<i class="fas fa-arrow-up"></i>';
