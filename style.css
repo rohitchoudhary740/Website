@@ -382,7 +382,7 @@ html {
     }
 }
 
-/* About section styles */
+
 #about {
     background: rgba(255, 255, 255, 0.04);
     color: #f3f2f7;
@@ -515,7 +515,6 @@ html {
     }
 }
 
-/* Department section */
 #dept {
     background: #000000;
     color: #ece9fb;
@@ -1699,4 +1698,5 @@ body {
         bottom: 100px;
     }
 }
+
 
