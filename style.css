@@ -5,17 +5,33 @@
     box-sizing: border-box;
 }
 
+:root {
+    /* page palette */
+    --page-bg: #000000;
+    --page-color: #eae6ef;
+    --muted: rgba(255,255,255,0.85);
+}
+
+/* Ensure whole page sections are pure black by default */
+html, body, main, section, header, footer,
+#about, #search, #updates, #notes, #pyqs, #contact, #dept, #events, #highlights, .hero {
+    background: var(--page-bg) !important;
+    color: var(--page-color) !important;
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
-    color: #333;
-    background: #000000;
+    color: var(--page-color);
+    background: var(--page-bg);
 }
 
+/* Keep page container transparent so background is visible */
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+    background: transparent;
 }
 
 /* Header Styles */
@@ -65,6 +81,7 @@ body {
     display: flex;
     list-style: none;
     gap: 2rem;
+    background: transparent;
 }
 
 .nav-link {
@@ -79,7 +96,7 @@ body {
 }
 
 .nav-link:hover {
-    background-color: rgba(234, 223, 234, 0.1);
+    background-color: rgba(234, 223, 234, 0.06);
     transform: translateY(-2px);
 }
 
@@ -105,8 +122,8 @@ body {
 
 /* Hero Section */
 .hero {
-    background: #000000;
-    color: white;
+    background: var(--page-bg);
+    color: var(--page-color);
     padding: 120px 0 30px;
     text-align: center;
     min-height: 100vh;
@@ -209,7 +226,7 @@ body {
         left: -100%;
         top: 70px;
         flex-direction: column;
-        background-color: rgba(190, 182, 194, 0.95);
+        background-color: rgba(0, 0, 0, 0.95); /* <-- force dark mobile nav */
         width: 100%;
         text-align: center;
         transition: 0.3s;
@@ -282,17 +299,18 @@ html {
 }
 
 /* Match hero gradient for content sections */
+/* override previous gradients with dark base so sections are solid black */
 #search,
 #updates {
-    background: linear-gradient(135deg, #110b1c 0%, #150725 100%);
-    color: rgb(237, 220, 220);
+    background: var(--page-bg) !important;
+    color: var(--muted);
 }
 
 #notes,
 #pyqs,
 #contact {
-    background: #000000;
-    color: rgb(237, 220, 220);
+    background: var(--page-bg);
+    color: var(--muted);
 }
 
 /* Modern Section Divider - Professional & Creative */
@@ -301,14 +319,15 @@ html {
     height: 2px;
     margin: 50px auto;
     max-width: 1200px;
+    /* make divider subtle on black background */
     background: linear-gradient(90deg,
             transparent 0%,
-            rgba(138, 92, 246, 0.2) 15%,
-            rgba(78, 205, 196, 0.4) 30%,
-            rgba(255, 209, 102, 0.6) 50%,
-            rgba(78, 205, 196, 0.4) 70%,
-            rgba(138, 92, 246, 0.2) 85%,
-            transparent 100%);
+            rgba(138, 92, 246, 0.12) 15%,
+            rgba(78, 205, 196, 0.12) 30%,
+            rgba(255, 209, 102, 0.14) 50%,
+            rgba(78, 205, 196, 0.12) 70%,
+            rgba(138, 92, 246, 0.12) 85%,
+            transparent 100%) !important;
     overflow: visible;
     animation: dividerPulse 3s ease-in-out infinite;
 }
@@ -340,8 +359,8 @@ html {
     height: 100%;
     background: linear-gradient(90deg,
             transparent 0%,
-            rgba(255, 209, 102, 0.1) 48%,
-            rgba(255, 209, 102, 0.1) 52%,
+            rgba(255, 209, 102, 0.06) 48%,
+            rgba(255, 209, 102, 0.06) 52%,
             transparent 100%);
     animation: dividerShimmer 4s linear infinite;
 }
@@ -384,8 +403,8 @@ html {
 
 
 #about {
-    background: black;
-    color: #f3f2f7;
+    background: var(--page-bg);
+    color: var(--muted);
 }
 
 .about-wrap {
@@ -415,7 +434,7 @@ html {
     display: flex;
     align-items: center;
     gap: 10px;
-    background: black;
+    background: #000; /* ensure list items remain black-ish */
     border: 1px solid rgba(255, 255, 255, 0.06);
     border-radius: 12px;
     padding: 10px 12px;
@@ -434,11 +453,11 @@ html {
     display: flex;
     gap: 12px;
     align-items: center;
-    background: black;
-    border: 1px solid rgba(231, 223, 223, 0.221);
+    background: #000; /* card base remains dark */
+    border: 1px solid rgba(231, 223, 223, 0.08);
     border-radius: 14px;
     padding: 14px;
-    box-shadow: 0 10px 24px rgba(193, 193, 44, 0.116);
+    box-shadow: 0 10px 24px rgba(193, 193, 44, 0.08);
     position: relative;
     overflow: hidden;
     cursor: pointer;
@@ -496,7 +515,7 @@ html {
     display: grid;
     place-items: center;
     color: #fff;
-    background: black;
+    background: #000;
     box-shadow: 0 10px 20px rgba(181, 99, 236, 0.35);
 }
 
@@ -516,7 +535,7 @@ html {
 }
 
 #dept {
-    background: #000000;
+    background: var(--page-bg);
     color: #ece9fb;
 }
 
@@ -588,7 +607,7 @@ html {
     padding: 12px 16px;
     border-radius: 14px;
     border: 1px solid rgba(255, 255, 255, 0.08);
-    background: rgba(255, 255, 255, 0.04);
+    background: rgba(255, 255, 255, 0.02);
     box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45);
 }
 
@@ -609,7 +628,7 @@ html {
 
 /* Events */
 #events {
-    background: #000000;
+    background: var(--page-bg);
     color: #ece9fb;
 }
 
@@ -636,9 +655,9 @@ html {
     position: relative;
     border-radius: 16px;
     overflow: hidden;
-    background: rgba(180, 151, 151, 0.04);
-    border: 1px solid rgba(231, 223, 223, 0.221);
-    box-shadow: 0 10px 24px rgba(193, 193, 44, 0.116);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+    border: 1px solid rgba(231, 223, 223, 0.06);
+    box-shadow: 0 10px 24px rgba(193, 193, 44, 0.06);
     transition: transform .2s ease, box-shadow .2s ease;
     cursor: pointer;
 }
@@ -710,7 +729,7 @@ html {
 
 /* Highlights below hero */
 #highlights {
-    background: #000000;
+    background: var(--page-bg);
     color: #fff;
 }
 
@@ -791,12 +810,10 @@ html {
     background: radial-gradient(1200px 200px at var(--mx, 50%) 120%, rgba(138, 8, 224, 0.25), transparent 100%);
     opacity: 0;
     transition: opacity .30s ease;
-
-
 }
 
 .highlight-card:hover::after {
-    opacity: 2;
+    opacity: 0.9;
 }
 
 @media (max-width: 900px) {
@@ -878,10 +895,10 @@ html {
 .update-card,
 #contact .contact-card {
     position: relative;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
     border-radius: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
     backdrop-filter: blur(8px);
     overflow: hidden;
 }
@@ -991,713 +1008,43 @@ html {
     border-radius: 999px;
     border: 1px solid rgba(255, 255, 255, 0.25);
     color: #f2eeee;
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.02);
     backdrop-filter: blur(6px);
     cursor: pointer;
     transition: all 0.2s ease;
 }
 
 .tab-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
-}
-
-.tab-btn.active {
-    background: linear-gradient(135deg, #8a5cf6, #b563ec);
-    border-color: transparent;
-    box-shadow: 0 10px 22px rgba(181, 99, 236, 0.45);
-}
-
-/* Micro-interactions for primary buttons */
-.btn-primary {
-    transform: translateZ(0);
-}
-
-.btn-primary:hover {
-    filter: brightness(1.05);
+    background: rgba(255,255,255,0.05);
     transform: translateY(-2px);
 }
 
-.btn-primary:active {
-    transform: translateY(0);
+/* -------------------------
+   End of original CSS area
+   Added overrides below to ensure consistent black backgrounds
+   ------------------------- */
+
+/* safety: ensure any leftover section-level gradients are transparent over black */
+section[class^="section"], 
+section[id], 
+.page-section {
+    background: var(--page-bg) !important;
+    color: var(--page-color) !important;
 }
 
-/* Segmented controls for semester filters */
-.seg-controls {
-    display: inline-flex;
-    gap: 8px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 999px;
-    padding: 6px;
-}
-
-.seg-btn {
-    background: transparent;
-    color: #f2eeee;
-    border: none;
-    border-radius: 999px;
-    padding: 8px 14px;
-    cursor: pointer;
-    transition: all .2s ease;
-}
-
-.seg-btn:hover {
-    background: rgba(255, 255, 255, 0.06);
-}
-
-.seg-btn.active {
-    background: linear-gradient(135deg, #8a5cf6, #b563ec);
-    color: #fff;
-    box-shadow: 0 8px 18px rgba(181, 99, 236, 0.35);
-}
-
-/* Motion safety */
-@media (prefers-reduced-motion: reduce) {
-
-    .note-card:hover,
-    .pyq-card:hover,
-    .update-card:hover,
-    #contact .contact-card:hover,
-    .tab-btn:hover,
-    .btn-primary:hover {
-        transform: none;
-        transition: none;
-    }
-}
-
-/* Section background — keep this as your main dark shade */
-.section,
-.hero {
-    background: #0f0f1a;
-    /* same dark color for consistency */
-}
-
-/* Info/stat boxes container strip (the row with 3 boxes) */
-.stats-strip {
-    /* add this class to the row wrapper if not present */
-    background: transparent;
-    /* remove tinted overlay behind the boxes */
-}
-
-/* The three boxes themselves */
-.info-card {
-    /* add this class on each box */
-    background: rgba(17, 17, 28, 0.88);
-    /* darker, closer to section background */
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    /* subtle border, optional */
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
-    /* reduce glow */
-    backdrop-filter: none;
-    /* turn off glassmorphism blur */
-}
-
-/* If your current boxes reuse .note-card or similar, you can target them directly */
-.note-card.stats,
-.card--stat,
-.feature-pill {
-    background: rgba(17, 17, 28, 0.88) !important;
-    border-color: rgba(255, 255, 255, 0.06) !important;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25) !important;
-}
-
-/* Remove gradient/tint from the strip behind the boxes if it exists */
-.section .strip-overlay {
+/* ensure any explicit gradient backgrounds that might show non-black are placed on transparent base */
+header, main, footer, .page, .content {
     background: transparent !important;
 }
 
-/* Reduce border-radius to look less “badge-like” if desired */
-.info-card,
-.card--stat {
-    border-radius: 14px;
-}
-
-/* Optional: make text pop on the darker card */
-.info-card h4,
-.card--stat h4 {
-    color: #e8e8f2;
-}
-
-.info-card p,
-.card--stat p {
-    color: #b8b8c9;
-}
-
-/* Reset default blue links */
-a {
+/* subtle tweaks to keep readability on pure black */
+a, .nav-link, .dept-link, .btn {
     color: inherit;
-    text-decoration: none;
 }
 
-/* Modern inline link style */
-.link,
-.section a:not(.btn):not(.btn-small):not(.nav-link):not(.social-links a) {
-    position: relative;
-    color: #cfd2ff;
-    /* soft indigo for dark bg */
-    text-decoration: none;
-    transition: color .2s ease;
+/* ensure highlight overlays remain visible over black */
+.highlight-card::after {
+    background: radial-gradient(1200px 200px at var(--mx, 50%) 120%, rgba(138, 8, 224, 0.12), transparent 100%);
 }
 
-.link:hover,
-.section a:not(.btn):not(.btn-small):not(.nav-link):not(.social-links a):hover {
-    color: #ffffff;
-    /* brighter on hover */
-}
-
-/* Animated underline on hover (from center) */
-.link::after,
-.section a:not(.btn):not(.btn-small):not(.nav-link):not(.social-links a)::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    bottom: -2px;
-    width: 0;
-    height: 2px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    transition: width .25s ease, left .25s ease;
-    border-radius: 2px;
-}
-
-.link:hover::after,
-.section a:not(.btn):not(.btn-small):not(.nav-link):not(.social-links a):hover::after {
-    width: 100%;
-    left: 0;
-}
-
-/* Focus-visible for accessibility */
-.link:focus-visible,
-.section a:not(.btn):not(.btn-small):not(.nav-link):not(.social-links a):focus-visible {
-    outline: 2px solid #ffd86b;
-    outline-offset: 3px;
-    border-radius: 4px;
-}
-
-.card-actions a.btn-small {
-    background: rgba(255, 255, 255, 0.06);
-    color: #e9e9f6;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 10px;
-    padding: 10px 14px;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    transition: transform .15s ease, background .2s ease, border-color .2s ease;
-}
-
-.card-actions a.btn-small:hover {
-    transform: translateY(-2px);
-    background: rgba(255, 255, 255, 0.10);
-    border-color: rgba(255, 255, 255, 0.18);
-}
-
-.btn-download i {
-    color: #7ddc7a;
-}
-
-/* subtle green */
-.btn-view i {
-    color: #78c7ff;
-}
-
-/* subtle blue */
-.footer-madeby {
-    display: flex;
-    gap: 12px;
-    align-items: center;
-    color: #bfc2d9;
-    margin-top: 8px
-}
-
-.footer-madeby .link {
-    color: #cfd2ff
-}
-
-/* Prevent overlap: respect fixed header and stacking */
-html {
-    scroll-padding-top: 90px;
-}
-
-.section {
-    position: relative;
-    z-index: 1;
-    padding: 60px 0;
-}
-
-.header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-}
-
-.container,
-.section {
-    overflow: visible;
-}
-
-/* Contact specific styles */
-.contact-section {
-    background: #0f0f1a;
-}
-
-/* same as your dark sections */
-.contact-intro {
-    max-width: 720px;
-    margin: 0 auto 20px;
-    color: #bfc2d9;
-    text-align: center;
-}
-
-.contact-card {
-    max-width: 720px;
-    margin: 12px auto 8px;
-    padding: 20px;
-    background: #11111c;
-    border: 1px solid rgba(255, 255, 255, .06);
-    border-radius: 16px;
-    display: flex;
-    gap: 16px;
-    align-items: center;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, .25)
-}
-
-.contact-avatar {
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex: 0 0 64px;
-    color: #fff;
-    font-weight: 700;
-    font-size: 1.25rem
-}
-
-.avatar-initial {
-    letter-spacing: .5px
-}
-
-.contact-info {
-    display: flex;
-    flex-direction: column;
-    gap: 6px
-}
-
-.contact-name {
-    margin: 0;
-    color: #e9e9f6
-}
-
-.contact-role {
-    margin: 0;
-    color: #a7abc8;
-    font-size: .95rem
-}
-
-.btn-linkedin {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: #0A66C2;
-    color: #fff;
-    border: none;
-    border-radius: 10px;
-    padding: 10px 16px;
-    text-decoration: none;
-    transition: transform .15s ease, background .2s ease
-}
-
-.btn-linkedin:hover {
-    background: #095aaa;
-    transform: translateY(-2px)
-}
-
-/* Container (optional alignment) */
-.dept-actions {
-    display: flex;
-    justify-content: center;
-    /* center it; use flex-start if left align */
-    margin: 16px 0;
-}
-
-/* Base button style */
-.dept-link {
-    display: inline-flex;
-    align-items: left;
-    gap: 10px;
-    padding: 12px 18px;
-    border-radius: 12px;
-    text-decoration: none;
-    font-weight: 700;
-    /* bold black text */
-    color: #060101;
-    /* black text */
-    border: 1px solid transparent;
-    transition: transform .15s ease, box-shadow .2s ease, background-color .2s ease, border-color .2s ease;
-}
-
-/* Light green background variant */
-.dept-link--green {
-    background-color: #1da911;
-    /* light green */
-    border-color: #a6eea0;
-    /* subtle border */
-}
-
-/* Hover/active/focus states for modern feel and accessibility */
-.dept-link--green:hover {
-    background-color: #7a11b2;
-    /* slightly darker on hover */
-    box-shadow: 0 8px 20px rgba(237, 230, 22, 0.25);
-    transform: translateY(-2px);
-}
-
-.dept-link--green:active {
-    transform: translateY(0);
-    box-shadow: 0 4px 12px rgba(74, 222, 128, 0.2);
-}
-
-.dept-link--green:focus-visible {
-    outline: 3px solid #7bdc7a;
-    /* accessible focus ring */
-    outline-offset: 3px;
-}
-
-/* Icon sizing */
-.dept-link i {
-    font-size: 1.05rem;
-    color: #0b0b0b;
-    /* keep icon black to match text */
-}
-
-/* Optional: make it full-width on mobile */
-@media (max-width: 480px) {
-    .dept-link {
-        width: 100%;
-        justify-content: center;
-    }
-}
-
-/* CERN-style white navbar */
-.header {
-    background: transparent;
-    box-shadow: none;
-    border: none;
-}
-
-.navbar-shell {
-    background: #0f0808;
-    border: white;
-    border-radius: 999px;
-    margin: 16px auto;
-    max-width: 1250px;
-    box-shadow: 0 6px 20px rgba(240, 236, 11, 0.08);
-    border: 1px solid rgba(242, 242, 243, 0.208);
-}
-
-/* Inner layout */
-.header .container {
-    padding: 10px 24px;
-}
-
-#location {
-    background: #0f0f1a;
-    color: #eaeaf5;
-}
-
-.section-title {
-    font-size: 2.2rem;
-    text-align: center;
-    margin-bottom: 8px;
-}
-
-.section-subtitle {
-    text-align: center;
-    color: #b8b8d4;
-    margin-bottom: 30px;
-}
-
-/* Map Card */
-.map-card {
-    position: relative;
-    max-width: 1000px;
-    margin: 0 auto;
-    border-radius: 20px;
-    overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
-    background: rgba(20, 20, 40, 0.9);
-}
-
-/* Google Map iframe */
-.map-card iframe {
-    width: 100%;
-    height: 420px;
-    border: none;
-    filter: grayscale(10%) contrast(1.05) saturate(1.1);
-}
-
-/* Floating label overlay */
-.map-overlay {
-    position: absolute;
-    bottom: 18px;
-    left: 18px;
-    background: rgba(15, 15, 30, 0.9);
-    backdrop-filter: blur(10px);
-    padding: 10px 16px;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-weight: 600;
-    color: #ffd166;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-}
-
-.map-overlay i {
-    color: #ff6b6b;
-    font-size: 1.1rem;
-}
-
-/* Mobile optimization */
-@media (max-width: 600px) {
-    .map-card iframe {
-        height: 300px;
-    }
-}
-
-/* =========================
-   ROOT & GLOBAL STYLES
-========================= */
-:root {
-    --primary: #2563eb;
-    --secondary: #0f172a;
-    --bg-glass: rgba(255, 255, 255, 0.12);
-    --border-glass: rgba(255, 255, 255, 0.25);
-    --ai-msg: #e0f2fe;
-    --user-msg: #2563eb;
-    --shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
-    --radius: 14px;
-    font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-}
-
-body {
-    margin: 0;
-    background: #0b1220;
-    color: #fff;
-}
-
-/* =========================
-   FLOATING AI BUTTON
-========================= */
-.ai-float {
-    position: fixed;
-    bottom: 28px;
-    right: 28px;
-    width: 70px;
-    height: 70px;
-    background: transparent;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    box-shadow: var(--shadow);
-    z-index: 1000;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-#aiRobot {
-    width: 90px;
-    height: 90px;
-    background: transparent;
-}
-
-.ai-float {
-    width: 100px;
-    height: 160px;
-}
-
-
-
-/* =========================
-   CHAT CONTAINER
-========================= */
-.ai-chat {
-    position: fixed;
-    bottom: 120px;
-    right: 28px;
-    width: 360px;
-    max-height: 520px;
-    display: flex;
-    flex-direction: column;
-    background: var(--bg-glass);
-    backdrop-filter: blur(18px);
-    border: 1px solid var(--border-glass);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    overflow: hidden;
-    z-index: 1000;
-    animation: slideUp 0.35s ease;
-}
-
-.hidden {
-    display: none;
-}
-
-@keyframes slideUp {
-    from {
-        transform: translateY(20px);
-        opacity: 0;
-    }
-
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-/* =========================
-   CHAT HEADER
-========================= */
-.ai-chat-header {
-    background: linear-gradient(135deg, #1e40af, #2563eb);
-    padding: 14px 16px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-weight: 600;
-    letter-spacing: 0.3px;
-}
-
-.ai-close {
-    cursor: pointer;
-    font-size: 18px;
-    opacity: 0.85;
-    transition: opacity 0.2s ease;
-}
-
-.ai-close:hover {
-    opacity: 1;
-}
-
-/* =========================
-   CHAT BODY
-========================= */
-.ai-chat-body {
-    flex: 1;
-    padding: 14px;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-/* Custom Scrollbar */
-.ai-chat-body::-webkit-scrollbar {
-    width: 6px;
-}
-
-.ai-chat-body::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.25);
-    border-radius: 6px;
-}
-
-/* =========================
-   MESSAGES
-========================= */
-.ai-msg {
-    max-width: 80%;
-    padding: 10px 14px;
-    border-radius: 12px;
-    font-size: 14px;
-    line-height: 1.5;
-    animation: fadeIn 0.25s ease;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(6px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.ai-msg.ai {
-    background: var(--ai-msg);
-    color: #0f172a;
-    align-self: flex-start;
-    border-bottom-left-radius: 4px;
-}
-
-.ai-msg.user {
-    background: var(--user-msg);
-    color: #fff;
-    align-self: flex-end;
-    border-bottom-right-radius: 4px;
-}
-
-/* =========================
-   CHAT INPUT
-========================= */
-.ai-chat-input {
-    display: flex;
-    gap: 10px;
-    padding: 12px;
-    border-top: 1px solid var(--border-glass);
-    background: rgba(15, 23, 42, 0.6);
-}
-
-.ai-chat-input input {
-    flex: 1;
-    padding: 10px 12px;
-    border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    background: rgba(255, 255, 255, 0.1);
-    color: #fff;
-    font-size: 14px;
-    outline: none;
-}
-
-.ai-chat-input input::placeholder {
-    color: rgba(255, 255, 255, 0.6);
-}
-
-.ai-chat-input button {
-    padding: 10px 16px;
-    border-radius: 10px;
-    border: none;
-    cursor: pointer;
-    font-weight: 600;
-    background: linear-gradient(135deg, #2563eb, #1e40af);
-    color: #fff;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.ai-chat-input button:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.5);
-}
-
-/* =========================
-   RESPONSIVE
-========================= */
-@media (max-width: 480px) {
-    .ai-chat {
-        width: calc(100% - 32px);
-        right: 16px;
-        bottom: 100px;
-    }
-}
-
-
-
+/* end of file */
