@@ -10,7 +10,7 @@
 </head>
 
 <body>
-   
+    <!-- Header Section -->
     <header class="header">
         <div class="navbar-shell">
             <div class="container">
@@ -26,10 +26,10 @@
                     <style>
                         .nav-menu {
                             font-size: 14px;
-                            
+                            /* try 12px, 13px, etc. */
                         }
 
-                       
+                        /* Optional: make icons smaller too */
                         .nav-menu i {
                             font-size: 15px;
                         }
@@ -52,7 +52,7 @@
             </div>
     </header>
 
-    
+    <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
             <h1>Welcome to <span class="blink-accent">AI & Data Science</span></h1>
@@ -65,10 +65,10 @@
         </div>
     </section>
 
-    
+    <!-- Modern Divider -->
     <div class="section-divider"></div>
 
-    
+    <!-- About AI & Data Science -->
     <section class="section" id="about" style="padding: 50px 0;">
         <div class="container">
             <div class="about-wrap">
@@ -109,10 +109,10 @@
         </div>
     </section>
 
-    
+    <!-- Modern Divider -->
     <div class="section-divider"></div>
 
-    
+    <!-- School of Data Science and Forecasting -->
 
     <section class="section" id="dept" style="padding: 50px 0;">
         <div class="container">
@@ -121,9 +121,9 @@
                     <style>
                         .dept-title {
                             font-size: 36px;
-                            
+                            /* try 32px, 40px, etc. */
                             font-weight: bold;
-                            t */
+                            /* optional, makes it stand out */
                         }
                     </style>
 
@@ -157,7 +157,7 @@
 
 
 
-    
+    <!-- Highlights Section (below hero) -->
     <section class="section" id="highlights" style="padding: 20px 0 40px 0;">
         <div class="container">
             <div class="highlight-grid">
@@ -174,7 +174,7 @@
             </div>
         </div>
     </section>
-   
+    <!-- Events Section -->
     <section class="section" id="events" style="padding: 50px 0;">
         <div class="container">
             <div class="events-head">
@@ -184,9 +184,9 @@
                 <style>
                     .events-title {
                         font-size: 36px;
-                        
+                        /* adjust as needed: 32px, 40px, etc. */
                         font-weight: bold;
-                        
+                        /* optional, makes it stand out */
                     }
                 </style>
 
@@ -244,10 +244,12 @@
         </div>
     </section>
 
-    
+    <!-- Search Section -->
+
+    <!-- Modern Divider -->
     <div class="section-divider"></div>
 
-    
+    <!-- Notes Section -->
     <section class="section" id="notes" style="padding: 60px 0;">
         <div class="container">
             <h2 style="margin-bottom: 1rem;">Notes</h2>
@@ -271,7 +273,7 @@
         </div>
     </section>
 
-    
+    <!-- PYQs Section -->
     <section class="section" id="pyqs" style="padding: 60px 0;">
         <div class="container">
             <div style="display:flex; justify-content:space-between; align-items:center; gap:20px; flex-wrap:wrap;">
@@ -301,10 +303,10 @@
         <div id="aiRobot"></div>
     </div>
 
-   
+    <!-- Lottie library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
 
-    
+    <!-- Load animation -->
     <script>
         lottie.loadAnimation({
             container: document.getElementById("aiRobot"),
@@ -315,7 +317,7 @@
         });
     </script>
 
-    
+    <!-- AI CHAT POPUP -->
     <div class="ai-chat hidden" id="aiChat">
         <div class="ai-chat-header">
             AI Assistant
@@ -333,7 +335,9 @@
         R
     </div>
     <Script>
-       
+        /* ============================
+           AI FLOAT & CHAT TOGGLE
+        ============================ */
         const aiFloat = document.querySelector(".ai-float");
         const aiChat = document.getElementById("aiChat");
         const aiClose = document.getElementById("aiClose");
@@ -348,7 +352,9 @@
             aiChat.classList.add("hidden");
         });
 
-        
+        /* ============================
+           CHAT LOGIC (DEMO SAFE)
+        ============================ */
         document.addEventListener("DOMContentLoaded", () => {
 
             const sendBtn = document.getElementById("sendBtn");
