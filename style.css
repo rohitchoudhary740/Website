@@ -53,7 +53,7 @@ body {
     font-weight: bold;
 }
 
-
+/* Navigation Styles */
 .navbar {
     display: flex;
     align-items: center;
@@ -87,7 +87,7 @@ body {
     font-size: 1.1rem;
 }
 
-
+/* Hamburger Menu */
 .hamburger {
     display: none;
     flex-direction: column;
@@ -103,7 +103,7 @@ body {
     border-radius: 2px;
 }
 
-
+/* Hero Section */
 .hero {
     background: #000000;
     color: white;
@@ -202,7 +202,7 @@ body {
     box-shadow: 0 5px 15px rgba(235, 225, 35, 0.15);
 }
 
-
+/* Responsive Design */
 @media (max-width: 768px) {
     .nav-menu {
         position: fixed;
@@ -276,12 +276,12 @@ body {
 
 html {
     scroll-behavior: smooth;
-   
+    /* already present */
     scroll-padding-top: 80px;
-  
+    /* match your header height */
 }
 
-
+/* Match hero gradient for content sections */
 #search,
 #updates {
     background: linear-gradient(135deg, #110b1c 0%, #150725 100%);
@@ -295,12 +295,13 @@ html {
     color: rgb(237, 220, 220);
 }
 
+/* Modern Section Divider - Professional & Creative */
 .section-divider {
     position: relative;
     height: 2px;
     margin: 50px auto;
     max-width: 1200px;
-    background: black,
+    background: linear-gradient(90deg,
             transparent 0%,
             rgba(138, 92, 246, 0.2) 15%,
             rgba(78, 205, 196, 0.4) 30%,
@@ -321,7 +322,7 @@ html {
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background: black;
+    background: linear-gradient(135deg, #ffd166, #ffed4e);
     box-shadow:
         0 0 20px rgba(255, 209, 102, 0.8),
         0 0 40px rgba(255, 209, 102, 0.4),
@@ -337,7 +338,7 @@ html {
     transform: translateX(-50%);
     width: 100%;
     height: 100%;
-    background: black,
+    background: linear-gradient(90deg,
             transparent 0%,
             rgba(255, 209, 102, 0.1) 48%,
             rgba(255, 209, 102, 0.1) 52%,
@@ -381,7 +382,7 @@ html {
     }
 }
 
-
+/* About section styles */
 #about {
     background: black;
     color: #f3f2f7;
@@ -414,7 +415,7 @@ html {
     display: flex;
     align-items: center;
     gap: 10px;
-    background: black;
+    background: rgba(255, 255, 255, 0.04);
     border: 1px solid rgba(255, 255, 255, 0.06);
     border-radius: 12px;
     padding: 10px 12px;
@@ -450,7 +451,7 @@ html {
     inset: -2px;
     border-radius: 14px;
     padding: 2px;
-    background: black;
+    background: linear-gradient(45deg, #ffd166, #ffed4e, #ffd166);
     background-size: 200% 200%;
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
@@ -495,7 +496,7 @@ html {
     display: grid;
     place-items: center;
     color: #fff;
-    background: black;
+    background: linear-gradient(135deg, #8a5cf6, #b563ec);
     box-shadow: 0 10px 20px rgba(181, 99, 236, 0.35);
 }
 
@@ -514,6 +515,7 @@ html {
     }
 }
 
+/* Department section */
 #dept {
     background: #000000;
     color: #ece9fb;
@@ -1500,7 +1502,7 @@ body {
     right: 28px;
     width: 70px;
     height: 70px;
-    background: transparent;
+    background: linear-gradient(135deg, #2563eb, #1e40af);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -1522,7 +1524,10 @@ body {
     height: 160px;
 }
 
-
+#aiRobot {
+    width: 130px;
+    height: 130px;
+}
 
 /* =========================
    CHAT CONTAINER
@@ -1697,5 +1702,3 @@ body {
         bottom: 100px;
     }
 }
-
-
