@@ -384,7 +384,7 @@ html {
 
 
 #about {
-    background: rgba(255, 255, 255, 0.04);
+    background: black;
     color: #f3f2f7;
 }
 
@@ -415,7 +415,7 @@ html {
     display: flex;
     align-items: center;
     gap: 10px;
-    background: rgba(255, 255, 255, 0.04);
+    background: black;
     border: 1px solid rgba(255, 255, 255, 0.06);
     border-radius: 12px;
     padding: 10px 12px;
@@ -434,7 +434,7 @@ html {
     display: flex;
     gap: 12px;
     align-items: center;
-    background: rgba(255, 255, 255, 0.04);
+    background: black;
     border: 1px solid rgba(231, 223, 223, 0.221);
     border-radius: 14px;
     padding: 14px;
@@ -451,7 +451,7 @@ html {
     inset: -2px;
     border-radius: 14px;
     padding: 2px;
-    background: linear-gradient(45deg, #ffd166, #ffed4e, #ffd166);
+    background: black;
     background-size: 200% 200%;
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
@@ -496,7 +496,7 @@ html {
     display: grid;
     place-items: center;
     color: #fff;
-    background: linear-gradient(135deg, #8a5cf6, #b563ec);
+    background: black;
     box-shadow: 0 10px 20px rgba(181, 99, 236, 0.35);
 }
 
@@ -1698,5 +1698,6 @@ body {
         bottom: 100px;
     }
 }
+
 
 
