@@ -384,7 +384,7 @@ html {
 
 /* About section styles */
 #about {
-    background: black;
+    background: rgba(255, 255, 255, 0.04);
     color: #f3f2f7;
 }
 
@@ -434,7 +434,7 @@ html {
     display: flex;
     gap: 12px;
     align-items: center;
-    background: black;
+    background: rgba(255, 255, 255, 0.04);
     border: 1px solid rgba(231, 223, 223, 0.221);
     border-radius: 14px;
     padding: 14px;
@@ -1701,4 +1701,55 @@ body {
         right: 16px;
         bottom: 100px;
     }
+}
+
+html,
+body {
+    background: #000000;
+}
+
+/* FORCE page background black — do NOT affect cards */
+.section,
+.hero,
+#search,
+#updates,
+#notes,
+#pyqs,
+#contact,
+#about,
+#dept,
+#events,
+#highlights,
+#location {
+    background: transparent !important;
+}
+
+/* FLOATING AI BUTTON — TRANSPARENT */
+.ai-float {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    width: 160px;
+    /* bigger clickable area */
+    height: 200px;
+    background: transparent;
+    border-radius: 0;
+    /* remove circular mask */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: none;
+    /* IMPORTANT: removes background glow */
+    z-index: 1000;
+}
+
+/* AI ROBOT (Lottie) */
+#aiRobot {
+    width: 180px;
+    /* INCREASE SIZE */
+    height: 180px;
+    background: transparent;
+    pointer-events: none;
+    /* clicks go to parent */
 }
