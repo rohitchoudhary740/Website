@@ -1502,7 +1502,7 @@ body {
     right: 28px;
     width: 70px;
     height: 70px;
-    background: linear-gradient(135deg, #2563eb, #1e40af);
+    background: transparent;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -1524,10 +1524,7 @@ body {
     height: 160px;
 }
 
-#aiRobot {
-    width: 130px;
-    height: 130px;
-}
+
 
 /* =========================
    CHAT CONTAINER
@@ -1702,3 +1699,4 @@ body {
         bottom: 100px;
     }
 }
+
