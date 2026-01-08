@@ -244,12 +244,8 @@
         </div>
     </section>
 
-    <!-- Search Section -->
-
-    <!-- Modern Divider -->
     <div class="section-divider"></div>
 
-    <!-- Notes Section -->
     <section class="section" id="notes" style="padding: 60px 0;">
         <div class="container">
             <h2 style="margin-bottom: 1rem;">Notes</h2>
@@ -273,7 +269,6 @@
         </div>
     </section>
 
-    <!-- PYQs Section -->
     <section class="section" id="pyqs" style="padding: 60px 0;">
         <div class="container">
             <div style="display:flex; justify-content:space-between; align-items:center; gap:20px; flex-wrap:wrap;">
@@ -303,10 +298,9 @@
         <div id="aiRobot"></div>
     </div>
 
-    <!-- Lottie library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
 
-    <!-- Load animation -->
+  
     <script>
         lottie.loadAnimation({
             container: document.getElementById("aiRobot"),
@@ -317,7 +311,7 @@
         });
     </script>
 
-    <!-- AI CHAT POPUP -->
+   
     <div class="ai-chat hidden" id="aiChat">
         <div class="ai-chat-header">
             AI Assistant
@@ -335,9 +329,7 @@
         R
     </div>
     <Script>
-        /* ============================
-           AI FLOAT & CHAT TOGGLE
-        ============================ */
+       
         const aiFloat = document.querySelector(".ai-float");
         const aiChat = document.getElementById("aiChat");
         const aiClose = document.getElementById("aiClose");
@@ -352,55 +344,95 @@
             aiChat.classList.add("hidden");
         });
 
-        /* ============================
-           CHAT LOGIC (DEMO SAFE)
-        ============================ */
-        document.addEventListener("DOMContentLoaded", () => {
+       <script>
+document.addEventListener("DOMContentLoaded", () => {
 
-            const sendBtn = document.getElementById("sendBtn");
-            const userInput = document.getElementById("userInput");
-            const chatBody = document.querySelector(".ai-chat-body");
+    const sendBtn = document.getElementById("sendBtn");
+    const userInput = document.getElementById("userInput");
+    const chatBody = document.querySelector(".ai-chat-body");
 
-            function addMessage(text, sender) {
-                const msg = document.createElement("div");
-                msg.className = `ai-msg ${sender}`;
-                msg.textContent = text;
-                chatBody.appendChild(msg);
-                chatBody.scrollTop = chatBody.scrollHeight;
+    /* ------------------ AI DATA ------------------ */
+
+    const keywordResponses = {
+        notes: "You can access subject-wise notes from the Notes section.",
+        pyq: "Previous Year Questions are available under the PYQs tab.",
+        syllabus: "The complete syllabus is uploaded semester-wise.",
+        exam: "For exam updates, please check the notice or academic calendar.",
+        campus: "Campus information includes departments, facilities, and events.",
+        contact: "You can contact faculty or administration via the Contact section."
+    };
+
+    const fallbackReplies = [
+        "How can I help you with notes, PYQs, and campus information?",
+        "Please specify the subject or semester you are looking for.",
+        "I can guide you to notes, syllabus, or previous year questions.",
+        "Let me know what academic help you need."
+    ];
+
+    let fallbackIndex = 0;
+
+   
+
+    function addMessage(text, sender) {
+        const msg = document.createElement("div");
+        msg.className = `ai-msg ${sender}`;
+        msg.textContent = text;
+        chatBody.appendChild(msg);
+        chatBody.scrollTop = chatBody.scrollHeight;
+        return msg;
+    }
+
+    function showTypingIndicator() {
+        return addMessage("AI is typing...", "ai typing");
+    }
+
+    function removeTypingIndicator(indicator) {
+        if (indicator) indicator.remove();
+    }
+
+
+
+    function getAIReply(userText) {
+        const text = userText.toLowerCase();
+
+        for (let keyword in keywordResponses) {
+            if (text.includes(keyword)) {
+                return keywordResponses[keyword];
             }
+        }
 
-            function fakeAIReply(userText) {
-                const replies = [
+        const reply = fallbackReplies[fallbackIndex];
+        fallbackIndex = (fallbackIndex + 1) % fallbackReplies.length;
+        return reply;
+    }
 
-                    "How can I help you with notes, PYQs, and campus info",
-                    "Please check the Notes section for detailed material.",
-                    "You can find previous year questions in the PYQs tab.",
-                    "Let me know what subject you are looking for."
-                ];
-                return replies[Math.floor(Math.random() * replies.length)];
-            }
 
-            function sendMessage() {
-                const message = userInput.value.trim();
-                if (!message) return;
+    function sendMessage() {
+        const message = userInput.value.trim();
+        if (!message) return;
 
-                addMessage(message, "user");
-                userInput.value = "";
+        addMessage(message, "user");
+        userInput.value = "";
 
-                setTimeout(() => {
-                    addMessage(fakeAIReply(message), "ai");
-                }, 600);
-            }
+        const typingIndicator = showTypingIndicator();
 
-            sendBtn.addEventListener("click", sendMessage);
-            userInput.addEventListener("keydown", (e) => {
-                if (e.key === "Enter") {
-                    e.preventDefault();
-                    sendMessage();
-                }
-            });
-        });
-    </script>
+        setTimeout(() => {
+            removeTypingIndicator(typingIndicator);
+            addMessage(getAIReply(message), "ai");
+        }, 900);
+    }
+
+    sendBtn.addEventListener("click", sendMessage);
+
+    userInput.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+            e.preventDefault();
+            sendMessage();
+        }
+    });
+});
+</script>
+
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
@@ -483,3 +515,4 @@
 </body>
 
 </html>
+
