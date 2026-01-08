@@ -6,22 +6,21 @@
  ***********************/
 
 /* ========== Demo Data (replace later with real content) ========== */
-  const notesData = [
-    // Semester 1 subjects (six requested)
-    {
-      id: 1,
-      title: "Mathematics-1",
-      subject: "Mathematics-1",
-      semester: "1",
-      description: "Limits, differentiation, integration, and series with examples.",
-      downloadUrl: "https://drive.google.com/drive/folders/15AjBdZI7flmx6GDwMIlUjoYcf2Y1eTSU?usp=drive_link",
-      viewUrl: "https://drive.google.com/drive/folders/15AjBdZI7flmx6GDwMIlUjoYcf2Y1eTSU?usp=drive_link",
-      uploadDate: "2025-07-15",
-      fileSize: "1.2 MB"
+ const notesData = [
+    { 
+        id: 1, 
+        title: "Mathematics-1 Notes", 
+        subject: "mathematics-1", 
+        semester: 1, 
+        description: "Limits, differentiation, integration, and series with examples.", 
+        download: "https://drive.google.com/drive/folders/15AjBdZI7flmx6GDwMIlUjoYcf2Y1eTSU?usp=drive_link", 
+        view: "https://drive.google.com/drive/folders/15AjBdZI7flmx6GDwMIlUjoYcf2Y1eTSU?usp=drive_link" 
     },
+    // ... add your other notes here
+];
     {
       id: 2,
-      title: "Physics-1",
+      title: "Physics-1 Notes",
       subject: "Physics-1",
       semester: "1",
       description: "Mechanics, waves, optics basics with derivations and numericals.",
@@ -584,4 +583,32 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
+function createNoteCard(note) {
+    return `
+        <div class="note-card" data-subject="${note.subject}" data-semester="${note.semester}">
+            <div class="card-header">
+                <div class="card-icon">
+                    <i class="fas fa-book"></i>
+                </div>
+                <div>
+                    <h3 class="card-title">${note.title}</h3>
+                    <div class="card-meta">
+                        <span>Sem ${note.semester}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-description">
+                <p>${note.description}</p>
+            </div>
+            <div class="card-actions">
+                <a href="${note.download}" target="_blank" class="btn-small btn-download">
+                    <i class="fas fa-download"></i> Download
+                </a>
+                <a href="${note.view}" target="_blank" class="btn-small btn-view">
+                    <i class="fas fa-eye"></i> View
+                </a>
+            </div>
+        </div>
+    `;
+}
   
