@@ -944,6 +944,19 @@ html {
     box-shadow: 0 10px 22px rgba(0, 0, 0, 0.4);
 }
 
+.btn-small.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+    background: #666;
+    color: #999;
+}
+
+.btn-small.disabled:hover {
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+    transform: none;
+}
+
 /* Gradient border ring using pseudo-element */
 .note-card::before,
 .pyq-card::before,
