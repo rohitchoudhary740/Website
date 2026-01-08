@@ -294,9 +294,10 @@
         </div>
     </section>
 
-    <div class="ai-float">
-        <div id="aiRobot"></div>
-    </div>
+   <div class="ai-float" id="aiRobotBtn">
+    <div id="aiRobot"></div>
+</div>
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
 
@@ -319,14 +320,14 @@
         </div>
 
         <div class="ai-chat-body">
-            <div class="ai-msg ai">🙏 Namaste! How can I help you?</div>
+            <div class="ai-msg ai">Hello! How can I help you?</div>
         </div>
 
         <div class="ai-chat-input">
             <input id="userInput" type="text" placeholder="Type your message..." />
             <button id="sendBtn" type="button">Send</button>
         </div>
-        R
+        
     </div>
     <Script>
        
@@ -345,6 +346,28 @@
         });
 
        <script>
+           <script>
+document.addEventListener("DOMContentLoaded", () => {
+
+    const robotBtn = document.getElementById("aiRobotBtn");
+    const chatBox = document.getElementById("aiChat");
+    const closeBtn = document.getElementById("aiClose");
+
+    // OPEN CHAT
+    robotBtn.addEventListener("click", () => {
+        robotBtn.classList.add("hidden");   // hide robot
+        chatBox.classList.remove("hidden"); // show chat
+    });
+
+    // CLOSE CHAT
+    closeBtn.addEventListener("click", () => {
+        chatBox.classList.add("hidden");    // hide chat
+        robotBtn.classList.remove("hidden");// show robot
+    });
+
+});
+</script>
+<script>
 document.addEventListener("DOMContentLoaded", () => {
 
     const sendBtn = document.getElementById("sendBtn");
@@ -434,59 +457,7 @@ document.addEventListener("DOMContentLoaded", () => {
 </script>
 
 
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-
-            const sendBtn = document.getElementById("sendBtn");
-            const userInput = document.getElementById("userInput");
-            const chatBody = document.querySelector(".ai-chat-body");
-
-            if (!sendBtn || !userInput || !chatBody) {
-                console.error("Chat elements not found");
-                return;
-            }
-
-            sendBtn.addEventListener("click", sendMessage);
-
-            userInput.addEventListener("keydown", (e) => {
-                if (e.key === "Enter") {
-                    e.preventDefault();
-                    sendMessage();
-                }
-            });
-
-            function addMessage(text, sender) {
-                const msg = document.createElement("div");
-                msg.className = `ai-msg ${sender}`;
-                msg.textContent = text;
-                chatBody.appendChild(msg);
-                chatBody.scrollTop = chatBody.scrollHeight;
-            }
-
-            async function sendMessage() {
-                const message = userInput.value.trim();
-                if (!message) return;
-
-                addMessage(message, "user");
-                userInput.value = "";
-
-                try {
-                    const response = await fetch("http://localhost:3000/chat", {
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify({ message })
-                    });
-
-                    const data = await response.json();
-                    addMessage(data.reply, "ai");
-
-                } catch (err) {
-                    addMessage("⚠️ Backend not reachable", "ai");
-                    console.error(err);
-                }
-            }
-        });
-    </script>
+   
 
 
     <section class="section" id="location">
@@ -515,4 +486,5 @@ document.addEventListener("DOMContentLoaded", () => {
 </body>
 
 </html>
+
 
