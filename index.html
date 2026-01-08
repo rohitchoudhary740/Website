@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <!-- Header Section -->
+   
     <header class="header">
         <div class="navbar-shell">
             <div class="container">
@@ -26,10 +26,10 @@
                     <style>
                         .nav-menu {
                             font-size: 14px;
-                            /* try 12px, 13px, etc. */
+                            
                         }
 
-                        /* Optional: make icons smaller too */
+                       
                         .nav-menu i {
                             font-size: 15px;
                         }
@@ -52,7 +52,7 @@
             </div>
     </header>
 
-    <!-- Hero Section -->
+    
     <section id="home" class="hero">
         <div class="hero-content">
             <h1>Welcome to <span class="blink-accent">AI & Data Science</span></h1>
@@ -65,10 +65,10 @@
         </div>
     </section>
 
-    <!-- Modern Divider -->
+    
     <div class="section-divider"></div>
 
-    <!-- About AI & Data Science -->
+    
     <section class="section" id="about" style="padding: 50px 0;">
         <div class="container">
             <div class="about-wrap">
@@ -109,10 +109,10 @@
         </div>
     </section>
 
-    <!-- Modern Divider -->
+    
     <div class="section-divider"></div>
 
-    <!-- School of Data Science and Forecasting -->
+    
 
     <section class="section" id="dept" style="padding: 50px 0;">
         <div class="container">
@@ -121,9 +121,9 @@
                     <style>
                         .dept-title {
                             font-size: 36px;
-                            /* try 32px, 40px, etc. */
+                            
                             font-weight: bold;
-                            /* optional, makes it stand out */
+                            
                         }
                     </style>
 
@@ -157,8 +157,8 @@
 
 
 
-    <!-- Highlights Section (below hero) -->
-    <section class="section" id="highlights" style="padding: 20px 0 40px 0;">
+    
+    <section class="section" id="highlights" style=>
         <div class="container">
             <div class="highlight-grid">
                 <div class="highlight-card highlight-1">
@@ -174,7 +174,7 @@
             </div>
         </div>
     </section>
-    <!-- Events Section -->
+   
     <section class="section" id="events" style="padding: 50px 0;">
         <div class="container">
             <div class="events-head">
@@ -184,9 +184,9 @@
                 <style>
                     .events-title {
                         font-size: 36px;
-                        /* adjust as needed: 32px, 40px, etc. */
+                        
                         font-weight: bold;
-                        /* optional, makes it stand out */
+                        
                     }
                 </style>
 
@@ -244,8 +244,10 @@
         </div>
     </section>
 
+    
     <div class="section-divider"></div>
 
+    
     <section class="section" id="notes" style="padding: 60px 0;">
         <div class="container">
             <h2 style="margin-bottom: 1rem;">Notes</h2>
@@ -269,6 +271,7 @@
         </div>
     </section>
 
+    
     <section class="section" id="pyqs" style="padding: 60px 0;">
         <div class="container">
             <div style="display:flex; justify-content:space-between; align-items:center; gap:20px; flex-wrap:wrap;">
@@ -294,225 +297,378 @@
         </div>
     </section>
 
- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>AI Assistant</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <div class="ai-float">
+        <div id="aiRobot"></div>
+    </div>
 
-    <!-- Lottie -->
+   
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
 
-    <style>
-        .hidden { display: none; }
+    
+    <script>
+        lottie.loadAnimation({
+            container: document.getElementById("aiRobot"),
+            renderer: "svg",
+            loop: true,
+            autoplay: true,
+            path: "ai-robot.json"
+        });
+    </script>
 
-        .ai-float {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 80px;
-            cursor: pointer;
-            z-index: 1000;
-        }
+    
+    <div class="ai-chat hidden" id="aiChat">
+        <div class="ai-chat-header">
+            AI Assistant
+            <span class="ai-close" id="aiClose">✕</span>
+        </div>
 
-        .ai-chat {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 340px;
-            height: 460px;
-            background: #0f172a;
-            color: #fff;
-            border-radius: 16px;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-            z-index: 1001;
-        }
+        <div class="ai-chat-body">
+            <div class="ai-msg ai">🙏 Namaste! How can I help you?</div>
+        </div>
 
-        .ai-chat-header {
-            padding: 12px 16px;
-            background: #020617;
-            font-weight: 600;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .ai-close {
-            cursor: pointer;
-        }
-
-        .ai-chat-body {
-            flex: 1;
-            padding: 12px;
-            overflow-y: auto;
-        }
-
-        .ai-msg {
-            margin-bottom: 10px;
-            padding: 8px 12px;
-            border-radius: 10px;
-            max-width: 80%;
-        }
-
-        .ai-msg.ai {
-            background: #1e293b;
-        }
-
-        .ai-msg.user {
-            background: #2563eb;
-            margin-left: auto;
-        }
-
-        .ai-msg.typing {
-            font-style: italic;
-            opacity: 0.7;
-        }
-
-        .ai-chat-input {
-            display: flex;
-            padding: 10px;
-            border-top: 1px solid #334155;
-        }
-
-        .ai-chat-input input {
-            flex: 1;
-            padding: 8px;
-            border-radius: 8px;
-            border: none;
-            outline: none;
-        }
-
-        .ai-chat-input button {
-            margin-left: 8px;
-            padding: 8px 12px;
-            border: none;
-            border-radius: 8px;
-            background: #3b82f6;
-            color: #fff;
-            cursor: pointer;
-        }
-    </style>
-</head>
-<body>
-
-<!-- ROBOT -->
-<div class="ai-float" id="aiRobotBtn">
-    <div id="aiRobot"></div>
-</div>
-
-<!-- CHAT -->
-<div class="ai-chat hidden" id="aiChat">
-    <div class="ai-chat-header">
-        AI Assistant
-        <span class="ai-close" id="aiClose">✕</span>
+        <div class="ai-chat-input">
+            <input id="userInput" type="text" placeholder="Type your message..." />
+            <button id="sendBtn" type="button">Send</button>
+        </div>
+        R
     </div>
+    <script>
+    const aiFloat = document.querySelector(".ai-float");
+    const aiChat = document.getElementById("aiChat");
+    const aiClose = document.getElementById("aiClose");
 
-    <div class="ai-chat-body">
-        <div class="ai-msg ai">Hello! How can I help you?</div>
-    </div>
-
-    <div class="ai-chat-input">
-        <input id="userInput" type="text" placeholder="Type your message..." />
-        <button id="sendBtn">Send</button>
-    </div>
-</div>
-
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-
-    /* ---------- LOTTIE ---------- */
-    lottie.loadAnimation({
-        container: document.getElementById("aiRobot"),
-        renderer: "svg",
-        loop: true,
-        autoplay: true,
-        path: "ai-robot.json"
+    aiFloat.addEventListener("click", (e) => {
+        e.stopPropagation();
+        aiChat.classList.toggle("hidden");
     });
 
-    /* ---------- UI ELEMENTS ---------- */
-    const robotBtn = document.getElementById("aiRobotBtn");
-    const chatBox = document.getElementById("aiChat");
-    const closeBtn = document.getElementById("aiClose");
-    const sendBtn = document.getElementById("sendBtn");
-    const userInput = document.getElementById("userInput");
-    const chatBody = document.querySelector(".ai-chat-body");
-
-    /* ---------- OPEN / CLOSE ---------- */
-    robotBtn.addEventListener("click", () => {
-        robotBtn.classList.add("hidden");
-        chatBox.classList.remove("hidden");
-        userInput.focus();
+    aiClose.addEventListener("click", (e) => {
+        e.stopPropagation();
+        aiChat.classList.add("hidden");
     });
 
-    closeBtn.addEventListener("click", () => {
-        chatBox.classList.add("hidden");
-        robotBtn.classList.remove("hidden");
-    });
+    document.addEventListener("DOMContentLoaded", () => {
+        const sendBtn = document.getElementById("sendBtn");
+        const userInput = document.getElementById("userInput");
+        const chatBody = document.querySelector(".ai-chat-body");
 
-    /* ---------- AI DATA ---------- */
-    const keywordResponses = {
-        notes: "You can access subject-wise notes from the Notes section.",
-        pyq: "Previous Year Questions are available under the PYQs tab.",
-        syllabus: "The complete syllabus is uploaded semester-wise.",
-        exam: "For exam updates, please check the notice board.",
-        campus: "Campus details include departments, labs, and facilities.",
-        contact: "Faculty and admin contact details are in the Contact section."
-    };
-
-    const fallbackReplies = [
-        "How can I help you with notes or PYQs?",
-        "Please specify the subject or semester.",
-        "I can guide you with syllabus or exam details.",
-        "Let me know what academic help you need."
-    ];
-
-    let fallbackIndex = 0;
-
-    /* ---------- CHAT FUNCTIONS ---------- */
-    function addMessage(text, sender) {
-        const msg = document.createElement("div");
-        msg.className = `ai-msg ${sender}`;
-        msg.textContent = text;
-        chatBody.appendChild(msg);
-        chatBody.scrollTop = chatBody.scrollHeight;
-        return msg;
-    }
-
-    function getAIReply(text) {
-        const lower = text.toLowerCase();
-        for (let key in keywordResponses) {
-            if (lower.includes(key)) return keywordResponses[key];
+        function addMessage(text, sender) {
+            const msg = document.createElement("div");
+            msg.className = `ai-msg ${sender}`;
+            msg.textContent = text;
+            chatBody.appendChild(msg);
+            chatBody.scrollTop = chatBody.scrollHeight;
         }
-        const reply = fallbackReplies[fallbackIndex];
-        fallbackIndex = (fallbackIndex + 1) % fallbackReplies.length;
-        return reply;
-    }
 
-    function sendMessage() {
-        const message = userInput.value.trim();
-        if (!message) return;
+        const keywordResponses = {
+            pyq: "📄 Please check the PYQs section for previous year questions.",
+            pyqs: "📄 Please check the PYQs section for previous year questions.",
+            notes: "📚 You can find detailed notes in the Notes section.",
+            syllabus: "📝 The syllabus is available semester-wise in the Notes section.",
+            exam: "🧪 Exam-related updates are shared by the department notice board.",
+            campus: "🏫 Campus information includes events, facilities, and departments.",
+            location: "📍 You can find the campus location in the Location section.",
+            help: "🤖 I can help you with Notes, PYQs, syllabus, exams, and campus info."
+        };
 
-        addMessage(message, "user");
-        userInput.value = "";
+        const fallbackReplies = [
+            "Please mention what you are looking for: notes, PYQs, or syllabus.",
+            "Try typing keywords like notes, pyq, syllabus, or exam.",
+            "I am here to guide you through academic resources.",
+            "Let me know the subject or semester you need help with."
+        ];
 
-        const typing = addMessage("AI is typing...", "ai typing");
+        let fallbackIndex = 0;
 
-        setTimeout(() => {
-            typing.remove();
-            addMessage(getAIReply(message), "ai");
-        }, 900);
-    }
+        function sendMessage() {
+            const message = userInput.value.trim();
+            if (!message) return;
 
-    sendBtn.addEventListener("click", sendMessage);
-    userInput.addEventListener("keydown", e => {
-        if (e.key === "Enter") sendMessage();
-    });
+            addMessage(message, "user");
+            userInput.value = "";
 
-});
+            setTimeout(() => {
+                const text = message.toLowerCase();
+                let replied = false;
+
+                for (let key in keywordResponses) {
+                    if (text.includes(key)) {
+                        addMessage(keywordResponses[key], "ai");
+                        replied = true;
+                        break;
+                    }
+                }
+
+                if (!replied) {
+                    addMessage(fallbackReplies[fallbackIndex], "ai");
+                    fallbackIndex = (fallbackIndex + 1) % fallbackReplies.length;
+                }
+            }, 600);
+        }
+
+        sendBtn.addEventListener("click", sendMessage);
+        userInput.addEventListener("keydown", (e) => {
+            if (e.key === "Enter") {
+                e.preventDefault();
+                sendMessage();
+            }
+        });
+    }); 
 </script>
 
+    <script>
+        // Sample data for Notes
+        const notesData = [
+            { id: 1, title: "Mathematics-1 Notes", subject: "mathematics-1", semester: 1, description: "Complete notes covering calculus, algebra, and linear algebra", download: "#", view: "#" },
+            { id: 2, title: "Physics-1 Notes", subject: "Physics-1", semester: 1, description: "Fundamental physics concepts including mechanics and thermodynamics", download: "#", view: "#" },
+            { id: 3, title: "Fundamentals of Programming", subject: "Fundamentals of Programming", semester: 1, description: "Introduction to programming concepts and basic algorithms", download: "#", view: "#" },
+            { id: 4, title: "Descriptive Statistics", subject: "Descriptive Statistics", semester: 1, description: "Statistical analysis and data representation methods", download: "#", view: "#" },
+            { id: 5, title: "Introduction to Computer Science", subject: "Introduction to Computer Science", semester: 1, description: "Basics of computer science and computational thinking", download: "#", view: "#" },
+            { id: 6, title: "Fundamentals of Electronics", subject: "Fundamentals of Electronics", semester: 1, description: "Basic electronic components and circuit analysis", download: "#", view: "#" },
+            { id: 7, title: "Mathematics-2 Notes", subject: "mathematics-1", semester: 2, description: "Advanced mathematics topics for second semester", download: "#", view: "#" },
+            { id: 8, title: "Physics-2 Notes", subject: "Physics-1", semester: 2, description: "Advanced physics concepts and applications", download: "#", view: "#" }
+        ];
+
+        // Sample data for PYQs
+        const pyqsData = [
+            { id: 1, title: "Mathematics-1 PYQ 2024", subject: "mathematics-1", semester: 1, year: 2024, description: "Previous year question paper for Mathematics-1", download: "#", view: "#" },
+            { id: 2, title: "Physics-1 PYQ 2024", subject: "Physics-1", semester: 1, year: 2024, description: "Previous year question paper for Physics-1", download: "#", view: "#" },
+            { id: 3, title: "Programming PYQ 2024", subject: "Fundamentals of Programming", semester: 1, year: 2024, description: "Previous year question paper for Programming", download: "#", view: "#" },
+            { id: 4, title: "Mathematics-1 PYQ 2023", subject: "mathematics-1", semester: 1, year: 2023, description: "Previous year question paper for Mathematics-1", download: "#", view: "#" },
+            { id: 5, title: "Physics-1 PYQ 2023", subject: "Physics-1", semester: 1, year: 2023, description: "Previous year question paper for Physics-1", download: "#", view: "#" },
+            { id: 6, title: "Statistics PYQ 2024", subject: "Descriptive Statistics", semester: 1, year: 2024, description: "Previous year question paper for Statistics", download: "#", view: "#" },
+            { id: 7, title: "Mathematics-2 PYQ 2024", subject: "mathematics-1", semester: 2, year: 2024, description: "Previous year question paper for Mathematics-2", download: "#", view: "#" },
+            { id: 8, title: "Electronics PYQ 2023", subject: "Fundamentals of Electronics", semester: 1, year: 2023, description: "Previous year question paper for Electronics", download: "#", view: "#" }
+        ];
+
+        // Function to create note card
+        function createNoteCard(note) {
+            return `
+                <div class="note-card" data-subject="${note.subject}" data-semester="${note.semester}">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <div>
+                            <h3 class="card-title">${note.title}</h3>
+                            <div class="card-meta">
+                                <span>Sem ${note.semester}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-description">
+                        <p>${note.description}</p>
+                    </div>
+                    <div class="card-actions">
+                        <a href="${note.download}" class="btn-small btn-download">
+                            <i class="fas fa-download"></i> Download
+                        </a>
+                        <a href="${note.view}" class="btn-small btn-view">
+                            <i class="fas fa-eye"></i> View
+                        </a>
+                    </div>
+                </div>
+            `;
+        }
+
+        
+        function createPyqCard(pyq) {
+            return `
+                <div class="pyq-card" data-subject="${pyq.subject}" data-semester="${pyq.semester}" data-year="${pyq.year}">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <div>
+                            <h3 class="card-title">${pyq.title}</h3>
+                            <div class="card-meta">
+                                <span>Sem ${pyq.semester}</span>
+                                <span>${pyq.year}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-description">
+                        <p>${pyq.description}</p>
+                    </div>
+                    <div class="card-actions">
+                        <a href="${pyq.download}" class="btn-small btn-download">
+                            <i class="fas fa-download"></i> Download
+                        </a>
+                        <a href="${pyq.view}" class="btn-small btn-view">
+                            <i class="fas fa-eye"></i> View
+                        </a>
+                    </div>
+                </div>
+            `;
+        }
+
+        
+        function renderNotes(filterCategory = 'all', filterSem = 'all') {
+            const notesGrid = document.getElementById('notesGrid');
+            if (!notesGrid) return;
+
+            let filteredNotes = notesData;
+            
+            if (filterCategory !== 'all') {
+                filteredNotes = filteredNotes.filter(note => note.subject === filterCategory);
+            }
+            
+            if (filterSem !== 'all') {
+                filteredNotes = filteredNotes.filter(note => note.semester === parseInt(filterSem));
+            }
+
+            notesGrid.innerHTML = filteredNotes.map(note => createNoteCard(note)).join('');
+        }
+
+       
+        function renderPyqs(filterYear = 'all', filterSem = 'all') {
+            const pyqGrid = document.getElementById('pyqGrid');
+            if (!pyqGrid) return;
+
+            let filteredPyqs = pyqsData;
+            
+            if (filterYear !== 'all') {
+                filteredPyqs = filteredPyqs.filter(pyq => pyq.year === parseInt(filterYear));
+            }
+            
+            if (filterSem !== 'all') {
+                filteredPyqs = filteredPyqs.filter(pyq => pyq.semester === parseInt(filterSem));
+            }
+
+            pyqGrid.innerHTML = filteredPyqs.map(pyq => createPyqCard(pyq)).join('');
+        }
+
+        
+        document.addEventListener("DOMContentLoaded", () => {
+           
+            renderNotes();
+            renderPyqs();
+
+            
+            const noteTabBtns = document.querySelectorAll('#notes .tab-btn');
+            noteTabBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    noteTabBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    const category = btn.getAttribute('data-category');
+                    const activeSem = document.querySelector('#notes .seg-btn.active')?.getAttribute('data-sem') || 'all';
+                    renderNotes(category, activeSem);
+                });
+            });
+
+            const noteSegBtns = document.querySelectorAll('#notes .seg-btn');
+            noteSegBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    noteSegBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    const sem = btn.getAttribute('data-sem');
+                    const activeCategory = document.querySelector('#notes .tab-btn.active')?.getAttribute('data-category') || 'all';
+                    renderNotes(activeCategory, sem);
+                });
+            });
+
+            
+            const yearSelect = document.getElementById('yearSelect');
+            if (yearSelect) {
+                yearSelect.addEventListener('change', (e) => {
+                    const year = e.target.value;
+                    const activeSem = document.querySelector('#pyqs .seg-btn.active')?.getAttribute('data-sem') || 'all';
+                    renderPyqs(year, activeSem);
+                });
+            }
+
+           
+            const pyqSegBtns = document.querySelectorAll('#pyqs .seg-btn');
+            pyqSegBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    pyqSegBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    const sem = btn.getAttribute('data-sem');
+                    const activeYear = document.getElementById('yearSelect')?.value || 'all';
+                    renderPyqs(activeYear, sem);
+                });
+            });
+        });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+
+            const sendBtn = document.getElementById("sendBtn");
+            const userInput = document.getElementById("userInput");
+            const chatBody = document.querySelector(".ai-chat-body");
+
+            if (!sendBtn || !userInput || !chatBody) {
+                console.error("Chat elements not found");
+                return;
+            }
+
+            sendBtn.addEventListener("click", sendMessage);
+
+            userInput.addEventListener("keydown", (e) => {
+                if (e.key === "Enter") {
+                    e.preventDefault();
+                    sendMessage();
+                }
+            });
+
+            function addMessage(text, sender) {
+                const msg = document.createElement("div");
+                msg.className = `ai-msg ${sender}`;
+                msg.textContent = text;
+                chatBody.appendChild(msg);
+                chatBody.scrollTop = chatBody.scrollHeight;
+            }
+
+            async function sendMessage() {
+                const message = userInput.value.trim();
+                if (!message) return;
+
+                addMessage(message, "user");
+                userInput.value = "";
+
+                try {
+                    const response = await fetch("http://localhost:3000/chat", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ message })
+                    });
+
+                    const data = await response.json();
+                    addMessage(data.reply, "ai");
+
+                } catch (err) {
+                    addMessage("⚠️ Backend not reachable", "ai");
+                    console.error(err);
+                }
+            }
+        });
+    </script>
+
+
+    <section class="section" id="location">
+        <div class="container">
+            <h2 class="section-title">
+                Campus <span class="blink-accent">Location</span>
+            </h2>
+            <p class="section-subtitle">
+                Find us easily using Google Maps for accurate campus navigation.
+            </p>
+
+            <div class="map-card">
+                <iframe src="https://www.google.com/maps?q=Devi%20Ahilya%20Vishwavidyalaya%20Indore&output=embed"
+                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+
+                <div class="map-overlay">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>DAVV, Indore</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
 </body>
+
 </html>
