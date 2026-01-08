@@ -1753,3 +1753,8 @@ body {
     pointer-events: none;
     /* clicks go to parent */
 }
+.ai-msg.typing {
+    font-style: italic;
+    opacity: 0.7;
+}
+
