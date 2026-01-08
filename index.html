@@ -248,28 +248,38 @@
     <div class="section-divider"></div>
 
     
-    <section class="section" id="notes" style="padding: 60px 0;">
-        <div class="container">
-            <h2 style="margin-bottom: 1rem;">Notes</h2>
-            <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom: 12px; align-items:center;">
-                <button class="tab-btn active" data-category="all">All</button>
-                <button class="tab-btn" data-category="mathematics-1">Mathematics-1</button>
-                <button class="tab-btn" data-category="Physics-1">Physics-1</button>
-                <button class="tab-btn" data-category="Fundamentals of Programming">Fundamentals of programming</button>
-                <button class="tab-btn" data-category="Descriptive Statistics">Descriptive Statistics</button>
-                <button class="tab-btn" data-category="Introduction to Computer Science">Introduction to Computer
-                    Science</button>
-                <button class="tab-btn" data-category="Fundamentals of Electronics">Fundamentals of Electronics</button>
-            </div>
-            <div class="seg-controls" data-target="notes" style="margin-bottom: 20px;">
-                <button class="seg-btn active" data-sem="all">All</button>
-                <button class="seg-btn" data-sem="1">Sem 1</button>
-                <button class="seg-btn" data-sem="2">Sem 2</button>
-            </div>
-            <div id="notesGrid"
-                style="display:grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap:20px;"></div>
+   <section class="section" id="notes" style="padding: 60px 0;">
+    <div class="container">
+        <h2 style="margin-bottom: 1rem;">Notes</h2>
+        <div class="tab-container" style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom: 12px; align-items:center;">
+            <button class="tab-btn active" data-category="all">All</button>
+            <button class="tab-btn" data-category="mathematics-1">Mathematics-1</button>
+            <button class="tab-btn" data-category="Physics-1">Physics-1</button>
+            <button class="tab-btn" data-category="Fundamentals of Programming">Fundamentals of Programming</button>
+            <button class="tab-btn" data-category="Descriptive Statistics">Descriptive Statistics</button>
         </div>
-    </section>
+        <div class="seg-controls" data-target="notes" style="margin-bottom: 20px;">
+            <button class="seg-btn active" data-sem="all">All Semesters</button>
+            <button class="seg-btn" data-sem="1">Sem 1</button>
+            <button class="seg-btn" data-sem="2">Sem 2</button>
+        </div>
+        <div id="notesGrid" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap:20px;">
+            </div>
+    </div>
+</section>
+
+<section class="section" id="pyqs" style="padding: 60px 0;">
+    <div class="container">
+        <h2>Previous Year Questions</h2>
+        <div class="seg-controls" data-target="pyqs" style="margin: 12px 0 20px 0;">
+            <button class="seg-btn active" data-sem="all">All</button>
+            <button class="seg-btn" data-sem="1">Sem 1</button>
+            <button class="seg-btn" data-sem="2">Sem 2</button>
+        </div>
+        <div id="pyqGrid" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap:20px;">
+            </div>
+    </div>
+</section>
 
     
     <section class="section" id="pyqs" style="padding: 60px 0;">
@@ -419,30 +429,26 @@
     <script>
         // Sample data for Notes
         const notesData = [
-            { id: 1, title: "Mathematics-1 Notes", subject: "mathematics-1", semester: 1, description: "Complete notes covering calculus, algebra, and linear algebra", download: "#", view: "#" },
-            { id: 2, title: "Physics-1 Notes", subject: "Physics-1", semester: 1, description: "Fundamental physics concepts including mechanics and thermodynamics", download: "#", view: "#" },
-            { id: 3, title: "Fundamentals of Programming", subject: "Fundamentals of Programming", semester: 1, description: "Introduction to programming concepts and basic algorithms", download: "#", view: "#" },
-            { id: 4, title: "Descriptive Statistics", subject: "Descriptive Statistics", semester: 1, description: "Statistical analysis and data representation methods", download: "#", view: "#" },
-            { id: 5, title: "Introduction to Computer Science", subject: "Introduction to Computer Science", semester: 1, description: "Basics of computer science and computational thinking", download: "#", view: "#" },
-            { id: 6, title: "Fundamentals of Electronics", subject: "Fundamentals of Electronics", semester: 1, description: "Basic electronic components and circuit analysis", download: "#", view: "#" },
+            { id: 1, title: "Mathematics-1 Notes", subject: "mathematics-1", semester: 1, description: "Limits, differentiation, integration, and series with examples.", download: "https://drive.google.com/drive/folders/15AjBdZI7flmx6GDwMIlUjoYcf2Y1eTSU?usp=drive_link", view: "https://drive.google.com/drive/folders/15AjBdZI7flmx6GDwMIlUjoYcf2Y1eTSU?usp=drive_link" },
+            { id: 2, title: "Physics-1 Notes", subject: "Physics-1", semester: 1, description: "Mechanics, waves, optics basics with derivations and numericals.", download: "https://drive.google.com/drive/folders/18wTiyF310vpw6zlWxPxec8hpNNcC-k3E?usp=drive_link", view: "https://drive.google.com/drive/folders/18wTiyF310vpw6zlWxPxec8hpNNcC-k3E?usp=drive_link" },
+            { id: 3, title: "Fundamentals of Programming", subject: "Fundamentals of Programming", semester: 1, description: "Variables, control flow, functions, arrays, and simple problems.", download: "https://drive.google.com/drive/folders/1MexdJhE10cOxlcESGd7llKuNSdlL0RRD?usp=drive_link", view: "https://drive.google.com/drive/folders/1MexdJhE10cOxlcESGd7llKuNSdlL0RRD?usp=drive_link" },
+            { id: 4, title: "Descriptive Statistics", subject: "Descriptive Statistics", semester: 1, description: "Mean, median, mode, variance, visualization, and data summaries.", download: "https://drive.google.com/drive/folders/1-oXkJACVUtBf0-PNAuzruc8XP9hVHj_e?usp=drive_link", view: "https://drive.google.com/drive/folders/1-oXkJACVUtBf0-PNAuzruc8XP9hVHj_e?usp=drive_link" },
+            { id: 5, title: "Introduction to Computer Science", subject: "Introduction to Computer Science", semester: 1, description: "Computers, OS, networks, algorithms, data, and real-world applications.", download: "https://drive.google.com/drive/folders/1SckE3hbwwyGiviOCImzYVsDSI715_BuT?usp=drive_link", view: "https://drive.google.com/drive/folders/1SckE3hbwwyGiviOCImzYVsDSI715_BuT?usp=drive_link" },
+            { id: 6, title: "Fundamentals of Electronics", subject: "Fundamentals of Electronics", semester: 1, description: "Semiconductors, diodes, transistors, basic circuits and applications.", download: "https://drive.google.com/drive/folders/1-VeW2ymPHykaVmDkz_BzwofkfM39zAfv?usp=drive_link", view: "https://drive.google.com/drive/folders/1-VeW2ymPHykaVmDkz_BzwofkfM39zAfv?usp=drive_link" },
             { id: 7, title: "Mathematics-2 Notes", subject: "mathematics-1", semester: 2, description: "Advanced mathematics topics for second semester", download: "#", view: "#" },
             { id: 8, title: "Physics-2 Notes", subject: "Physics-1", semester: 2, description: "Advanced physics concepts and applications", download: "#", view: "#" }
         ];
 
         // Sample data for PYQs
         const pyqsData = [
-            { id: 1, title: "Mathematics-1 PYQ 2024", subject: "mathematics-1", semester: 1, year: 2024, description: "Previous year question paper for Mathematics-1", download: "#", view: "#" },
-            { id: 2, title: "Physics-1 PYQ 2024", subject: "Physics-1", semester: 1, year: 2024, description: "Previous year question paper for Physics-1", download: "#", view: "#" },
-            { id: 3, title: "Programming PYQ 2024", subject: "Fundamentals of Programming", semester: 1, year: 2024, description: "Previous year question paper for Programming", download: "#", view: "#" },
-            { id: 4, title: "Mathematics-1 PYQ 2023", subject: "mathematics-1", semester: 1, year: 2023, description: "Previous year question paper for Mathematics-1", download: "#", view: "#" },
-            { id: 5, title: "Physics-1 PYQ 2023", subject: "Physics-1", semester: 1, year: 2023, description: "Previous year question paper for Physics-1", download: "#", view: "#" },
-            { id: 6, title: "Statistics PYQ 2024", subject: "Descriptive Statistics", semester: 1, year: 2024, description: "Previous year question paper for Statistics", download: "#", view: "#" },
-            { id: 7, title: "Mathematics-2 PYQ 2024", subject: "mathematics-1", semester: 2, year: 2024, description: "Previous year question paper for Mathematics-2", download: "#", view: "#" },
-            { id: 8, title: "Electronics PYQ 2023", subject: "Fundamentals of Electronics", semester: 1, year: 2023, description: "Previous year question paper for Electronics", download: "#", view: "#" }
+            { id: 1, title: "Sem 1 Final Paper", subject: "Common Subjects", semester: 1, year: 2024, description: "Complete First Semester PYQ set.", download: "https://drive.google.com/file/d/1-AEYzkwqN6NbFngJloTwdwAasBGkFMZ2/view?usp=drive_link", view: "https://drive.google.com/file/d/1-AEYzkwqN6NbFngJloTwdwAasBGkFMZ2/view?usp=drive_link" }
         ];
 
         // Function to create note card
         function createNoteCard(note) {
+            const isDownloadDisabled = note.download === '#' || !note.download;
+            const isViewDisabled = note.view === '#' || !note.view;
+
             return `
                 <div class="note-card" data-subject="${note.subject}" data-semester="${note.semester}">
                     <div class="card-header">
@@ -460,19 +466,22 @@
                         <p>${note.description}</p>
                     </div>
                     <div class="card-actions">
-                        <a href="${note.download}" class="btn-small btn-download">
-                            <i class="fas fa-download"></i> Download
+                        <a href="${note.download}" target="_blank" class="btn-small btn-download ${isDownloadDisabled ? 'disabled' : ''}" ${isDownloadDisabled ? 'onclick="return false;"' : ''}>
+                            <i class="fas fa-download"></i> ${isDownloadDisabled ? 'Coming Soon' : 'Download'}
                         </a>
-                        <a href="${note.view}" class="btn-small btn-view">
-                            <i class="fas fa-eye"></i> View
+                        <a href="${note.view}" target="_blank" class="btn-small btn-view ${isViewDisabled ? 'disabled' : ''}" ${isViewDisabled ? 'onclick="return false;"' : ''}>
+                            <i class="fas fa-eye"></i> ${isViewDisabled ? 'Coming Soon' : 'Preview'}
                         </a>
                     </div>
                 </div>
             `;
         }
 
-        
+
         function createPyqCard(pyq) {
+            const isDownloadDisabled = pyq.download === '#' || !pyq.download;
+            const isViewDisabled = pyq.view === '#' || !pyq.view;
+
             return `
                 <div class="pyq-card" data-subject="${pyq.subject}" data-semester="${pyq.semester}" data-year="${pyq.year}">
                     <div class="card-header">
@@ -491,11 +500,11 @@
                         <p>${pyq.description}</p>
                     </div>
                     <div class="card-actions">
-                        <a href="${pyq.download}" class="btn-small btn-download">
-                            <i class="fas fa-download"></i> Download
+                        <a href="${pyq.download}" target="_blank" class="btn-small btn-download ${isDownloadDisabled ? 'disabled' : ''}" ${isDownloadDisabled ? 'onclick="return false;"' : ''}>
+                            <i class="fas fa-download"></i> ${isDownloadDisabled ? 'Coming Soon' : 'Download'}
                         </a>
-                        <a href="${pyq.view}" class="btn-small btn-view">
-                            <i class="fas fa-eye"></i> View
+                        <a href="${pyq.view}" target="_blank" class="btn-small btn-view ${isViewDisabled ? 'disabled' : ''}" ${isViewDisabled ? 'onclick="return false;"' : ''}>
+                            <i class="fas fa-eye"></i> ${isViewDisabled ? 'Coming Soon' : 'Preview'}
                         </a>
                     </div>
                 </div>
