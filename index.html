@@ -333,6 +333,74 @@
         aiChat.classList.add("hidden");
     });
 
+    // Click outside to close functionality
+    document.addEventListener("click", (e) => {
+        // Check if the click is outside the chat box and not on the AI float button
+        if (!aiChat.contains(e.target) && !aiFloat.contains(e.target) && !aiChat.classList.contains("hidden")) {
+            aiChat.classList.add("hidden");
+        }
+    });
+
+    // Draggable functionality
+    let isDragging = false;
+    let dragStartX = 0;
+    let dragStartY = 0;
+    let chatStartX = 0;
+    let chatStartY = 0;
+
+    // Make header draggable (but not the close button)
+    const chatHeader = document.querySelector(".ai-chat-header");
+
+    chatHeader.addEventListener("mousedown", (e) => {
+        // Don't start dragging if clicking on the close button
+        if (e.target.closest('.ai-close')) {
+            return;
+        }
+
+        isDragging = true;
+        dragStartX = e.clientX;
+        dragStartY = e.clientY;
+        const chatRect = aiChat.getBoundingClientRect();
+        chatStartX = chatRect.left;
+        chatStartY = chatRect.top;
+
+        // Add dragging class for visual feedback
+        aiChat.classList.add("dragging");
+
+        // Prevent text selection during drag
+        e.preventDefault();
+    });
+
+    document.addEventListener("mousemove", (e) => {
+        if (!isDragging) return;
+
+        const deltaX = e.clientX - dragStartX;
+        const deltaY = e.clientY - dragStartY;
+
+        const newLeft = chatStartX + deltaX;
+        const newTop = chatStartY + deltaY;
+
+        // Constrain to viewport bounds
+        const chatRect = aiChat.getBoundingClientRect();
+        const maxX = window.innerWidth - chatRect.width;
+        const maxY = window.innerHeight - chatRect.height;
+
+        const constrainedLeft = Math.max(0, Math.min(newLeft, maxX));
+        const constrainedTop = Math.max(0, Math.min(newTop, maxY));
+
+        aiChat.style.left = constrainedLeft + "px";
+        aiChat.style.top = constrainedTop + "px";
+        aiChat.style.right = "auto";
+        aiChat.style.bottom = "auto";
+    });
+
+    document.addEventListener("mouseup", () => {
+        if (isDragging) {
+            isDragging = false;
+            aiChat.classList.remove("dragging");
+        }
+    });
+
     document.addEventListener("DOMContentLoaded", () => {
         const sendBtn = document.getElementById("sendBtn");
         const userInput = document.getElementById("userInput");
@@ -343,7 +411,11 @@
             msg.className = `ai-msg ${sender}`;
             msg.textContent = text;
             chatBody.appendChild(msg);
-            chatBody.scrollTop = chatBody.scrollHeight;
+
+            // Use setTimeout to ensure DOM is updated before scrolling
+            setTimeout(() => {
+                chatBody.scrollTop = chatBody.scrollHeight;
+            }, 10);
         }
 
         const keywordResponses = {
@@ -602,7 +674,11 @@
                 msg.className = `ai-msg ${sender}`;
                 msg.textContent = text;
                 chatBody.appendChild(msg);
-                chatBody.scrollTop = chatBody.scrollHeight;
+
+                // Use setTimeout to ensure DOM is updated before scrolling
+                setTimeout(() => {
+                    chatBody.scrollTop = chatBody.scrollHeight;
+                }, 10);
             }
 
             async function sendMessage() {
@@ -657,4 +733,3 @@
 </body>
 
 </html>
-
